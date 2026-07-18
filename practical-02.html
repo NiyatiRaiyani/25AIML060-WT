@@ -1,185 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Student Portal - Home</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .skip-link {
-            position: absolute;
-            left: -999px;
-            top: 10px;
-            background: black;
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-        }
-
-        .skip-link:focus {
-            left: 10px;
-        }
-
-        header {
-            background: #003366;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        nav {
-            background: #0055a5;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 10px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-        }
-
-        nav ul li a:hover,
-        nav ul li a:focus {
-            background: white;
-            color: #0055a5;
-            border-radius: 5px;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-
-        aside {
-            background: #e8f4ff;
-            padding: 15px;
-            border-left: 5px solid #0055a5;
-            margin-top: 20px;
-        }
-
-        footer {
-            background: #003366;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-
-        .breadcrumb {
-            background: #ddd;
-            padding: 10px;
-            margin: 15px;
-            border-radius: 5px;
-        }
-
-        .breadcrumb a {
-            text-decoration: none;
-            color: #003366;
-        }
-    </style>
+    <title>StudentHub - Home</title>
 </head>
-
 <body>
 
-    <!-- Skip Link -->
-    <a href="#maincontent" class="skip-link">Skip to Main Content</a>
+    <!-- Skip to Content -->
+    <a href="#main-content">Skip to Main Content</a>
 
     <!-- Header -->
     <header>
-        <h1>Student Portal</h1>
-        <p>Welcome to HTML5 Student Portal</p>
+        <h1>StudentHub</h1>
+        <p>CHARUSAT University Student Portal</p>
+
+        <!-- Navigation -->
+        <nav aria-label="Main Navigation">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="register.html">Register</a> |
+            <a href="login.html">Login</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
     </header>
 
-    <!-- Navigation -->
-    <nav aria-label="Main Navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+        <p>Home</p>
     </nav>
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a> > Home Page
-    </div>
-
     <!-- Main Content -->
-    <main id="maincontent">
+    <main id="main-content">
 
+        <!-- Welcome Section -->
         <section>
-            <h2>Welcome</h2>
+            <h2>Welcome to StudentHub</h2>
+
+            <img src="student.jpg"
+                 alt="Students studying together"
+                 width="400">
 
             <p>
-                This Student Portal demonstrates HTML5 semantic elements,
-                accessibility features, navigation menu, page linking,
-                and content hierarchy.
+                StudentHub is a simple academic portal designed to help
+                students access campus information, events, announcements,
+                and academic resources.
             </p>
         </section>
 
+        <!-- Latest Updates -->
         <section>
-            <h2>Available Services</h2>
+            <h2>Latest Updates</h2>
 
             <article>
-                <h3>Courses</h3>
-                <p>View all available courses and learning materials.</p>
+                <h3>AI Workshop</h3>
+                <p>Join the Artificial Intelligence workshop on 25 July 2026.</p>
             </article>
 
             <article>
-                <h3>Assignments</h3>
-                <p>Submit assignments and check deadlines.</p>
+                <h3>Coding Contest</h3>
+                <p>Participate in the annual coding competition and win exciting prizes.</p>
             </article>
 
             <article>
-                <h3>Results</h3>
-                <p>Check semester examination results online.</p>
+                <h3>Placement Drive</h3>
+                <p>Top companies are visiting the campus for recruitment.</p>
             </article>
         </section>
-
-        <aside>
-            <h3>Notice Board</h3>
-            <p>
-                Admissions are open for the next semester.
-                Submit your documents before the deadline.
-            </p>
-        </aside>
 
     </main>
 
+    <!-- Aside -->
+    <aside>
+        <h2>Quick Links</h2>
+
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </aside>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Student Portal | HTML5 Practical</p>
+        <p><strong>Contact:</strong> information@studenthub.com</p>
+        <p>&copy; 2026 StudentHub | CHARUSAT University</p>
     </footer>
 
 </body>
-
 </html>
