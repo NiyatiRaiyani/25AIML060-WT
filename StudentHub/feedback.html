@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feedback - CHARUSAT Student Hub">
     <title>CHARUSAT Student Hub - Feedback</title>
 </head>
 
@@ -11,9 +12,10 @@
 
     <header>
         <h1>CHARUSAT Student Hub</h1>
+        <p>CSPIT - Department of Artificial Intelligence & Machine Learning</p>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <a href="index.html">Home</a> |
         <a href="about.html">About</a> |
         <a href="register.html">Register</a> |
@@ -31,49 +33,69 @@
 
         <section>
 
-            <article>
+            <h2>Student Feedback</h2>
 
-                <h2>Student Feedback</h2>
+            <p>
+                We value your suggestions. Please share your feedback to help us
+                improve the CHARUSAT Student Hub.
+            </p>
 
-                <p>
-                    We value your feedback. Please share your suggestions to help us improve the CHARUSAT Student Hub.
-                </p>
+        </section>
 
-                <form>
+        <section>
 
-                    <label for="name">Full Name:</label><br>
-                    <input type="text" id="name" name="name"><br><br>
+            <form>
 
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email"><br><br>
+                <label for="name">Full Name</label><br>
+                <input type="text" id="name" name="name" required><br><br>
 
-                    <label for="feedback">Your Feedback:</label><br>
-                    <textarea id="feedback" name="feedback" rows="5" cols="30"></textarea><br><br>
+                <label for="email">Email Address</label><br>
+                <input type="email" id="email" name="email" required><br><br>
 
-                    <input type="submit" value="Submit Feedback">
+                <label for="rating">Overall Rating</label><br>
+                <select id="rating" name="rating">
+                    <option>Excellent</option>
+                    <option>Very Good</option>
+                    <option>Good</option>
+                    <option>Average</option>
+                    <option>Poor</option>
+                </select><br><br>
 
-                </form>
+                <label for="message">Feedback</label><br>
+                <textarea id="message" name="message" rows="5" cols="40" required></textarea><br><br>
 
-            </article>
+                <input type="submit" value="Submit Feedback">
+                <input type="reset" value="Clear">
 
-            <aside>
+            </form>
 
-                <h3>Feedback Guidelines</h3>
+        </section>
 
-                <ul>
-                    <li>Write your suggestions clearly.</li>
-                    <li>Provide constructive feedback.</li>
-                    <li>Help us improve student services.</li>
-                </ul>
+        <section>
 
-            </aside>
+            <h2>Why Your Feedback Matters</h2>
+
+            <ul>
+                <li>Improve student services</li>
+                <li>Enhance the Student Hub</li>
+                <li>Support academic activities</li>
+                <li>Provide a better user experience</li>
+            </ul>
 
         </section>
 
     </main>
 
     <footer>
+
         <p>&copy; 2026 CHARUSAT Student Hub. All Rights Reserved.</p>
+
+        <address>
+            CHARUSAT University<br>
+            CSPIT - Department of Artificial Intelligence & Machine Learning<br>
+            Changa, Anand, Gujarat, India
+        </address>
+
     </footer>
 
 </body>
