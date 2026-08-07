@@ -2,66 +2,81 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Student Login - CHARUSAT Student Hub">
-    <title>CHARUSAT Student Hub - Login</title>
+
+    <title>StudentHub | Login</title>
+
 </head>
 
 <body>
 
+    <a href="#main-content">Skip to Main Content</a>
+
     <header>
-        <h1>CHARUSAT Student Hub</h1>
-        <p>CSPIT - Department of Artificial Intelligence & Machine Learning</p>
+
+        <h1>StudentHub</h1>
+
+        <nav aria-label="Main Navigation">
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+
+            </ul>
+
+        </nav>
+
     </header>
 
-    <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="register.html">Register</a> |
-        <a href="login.html">Login</a> |
-        <a href="dashboard.html">Dashboard</a> |
-        <a href="events.html">Events</a> |
-        <a href="profile.html">Profile</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="admin.html">Admin</a> |
-        <a href="faq.html">FAQ</a> |
-        <a href="feedback.html">Feedback</a>
-    </nav>
+    <main id="main-content">
 
-    <main>
+        <nav aria-label="Breadcrumb">
+
+            <p>
+
+                <a href="index.html">Home</a> >
+                Login
+
+            </p>
+
+        </nav>
 
         <section>
 
             <h2>Student Login</h2>
 
-            <p>
-                Enter your registered email and password to access your Student Hub account.
-            </p>
+            <form action="#" method="post">
 
-            <form>
+                <p>
 
-                <label for="email">Email Address</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+                    <label for="email">Email Address</label><br>
 
-                <label for="password">Password</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+                    <input type="email" id="email" name="email" required>
 
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label><br><br>
+                </p>
 
-                <input type="submit" value="Login">
-                <input type="reset" value="Clear">
+                <p>
+
+                    <label for="password">Password</label><br>
+
+                    <input type="password" id="password" name="password" required>
+
+                </p>
+
+                <p>
+
+                    <input type="submit" value="Login">
+
+                    <input type="reset" value="Clear">
+
+                </p>
 
             </form>
-
-            <p>
-                New User? <a href="register.html">Register Here</a>
-            </p>
-
-            <p>
-                <a href="#">Forgot Password?</a>
-            </p>
 
         </section>
 
@@ -69,14 +84,7 @@
 
     <footer>
 
-        
-        <p>&copy; 2026 CHARUSAT Student Hub. All Rights Reserved.</p>
-
-        <address>
-            CHARUSAT University<br>
-            CSPIT - Department of Artificial Intelligence & Machine Learning<br>
-            Changa, Anand, Gujarat, India
-        </address>
+        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
 
     </footer>
 
