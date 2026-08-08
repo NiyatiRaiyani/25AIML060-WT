@@ -1,110 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudentHub | Admin</title>
-
 </head>
 
 <body>
 
-    <a href="#main-content">Skip to Main Content</a>
+<a href="#main-content">Skip to main content</a>
 
-    <header>
+<header>
+    <h1>StudentHub Administration</h1>
 
-        <h1>StudentHub Administration</h1>
+    <nav aria-label="Administrative navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="admin.html" aria-current="page">Admin</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <nav aria-label="Main Navigation">
+<main id="main-content">
 
-            <ul>
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Admin</li>
+        </ol>
+    </nav>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="contact.html">Contact</a></li>
+    <section>
+        <h2>Administration Dashboard</h2>
 
-            </ul>
-
-        </nav>
-
-    </header>
-
-    <main id="main-content">
-
-        <nav aria-label="Breadcrumb">
+        <article>
+            <h3>Student Management</h3>
 
             <p>
-
-                <a href="index.html">Home</a> >
-                Admin
-
+                Manage student records and review registered students.
             </p>
 
-        </nav>
+            <a href="profile.html">View Student Profiles</a>
+        </article>
 
-        <section>
+        <article>
+            <h3>Event Management</h3>
 
-            <h2>Administrator Panel</h2>
+            <p>
+                Review and manage upcoming student events.
+            </p>
 
-            <article>
+            <a href="events.html">View Events</a>
+        </article>
 
-                <h3>Student Management</h3>
+        <article>
+            <h3>Feedback Management</h3>
 
-                <p>
-                    Add, update, and maintain student records.
-                </p>
+            <p>
+                Review feedback submitted by students.
+            </p>
 
-            </article>
+            <a href="feedback.html">View Feedback</a>
+        </article>
+    </section>
 
-            <article>
+    <section>
+        <h2>Student Summary</h2>
 
-                <h3>Event Management</h3>
+        <table>
+            <caption>Student statistics</caption>
 
-                <p>
-                    Publish and manage college events.
-                </p>
+            <thead>
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
 
-            </article>
+            <tbody>
+                <tr>
+                    <td>Registered Students</td>
+                    <td>250</td>
+                    <td>Active</td>
+                </tr>
 
-            <article>
+                <tr>
+                    <td>Upcoming Events</td>
+                    <td>8</td>
+                    <td>Scheduled</td>
+                </tr>
 
-                <h3>Announcements</h3>
+                <tr>
+                    <td>Pending Feedback</td>
+                    <td>12</td>
+                    <td>Review Required</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-                <p>
-                    Share important academic notices with students.
-                </p>
+</main>
 
-            </article>
-
-        </section>
-
-        <aside>
-
-            <h3>Administrator Functions</h3>
-
-            <ul>
-
-                <li>Manage Students</li>
-                <li>Manage Events</li>
-                <li>Manage Notices</li>
-                <li>Generate Reports</li>
-
-            </ul>
-
-        </aside>
-
-    </main>
-
-    <footer>
-
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
-
-    </footer>
+<footer>
+    <p>&copy; 2026 StudentHub. All rights reserved.</p>
+</footer>
 
 </body>
-
 </html>

@@ -1,92 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudentHub | Profile</title>
-
 </head>
 
 <body>
 
-    <a href="#main-content">Skip to Main Content</a>
+<a href="#main-content">Skip to main content</a>
 
-    <header>
+<header>
+    <h1>StudentHub</h1>
 
-        <h1>Student Profile</h1>
+    <nav aria-label="Primary navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html" aria-current="page">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <nav aria-label="Main Navigation">
+<main id="main-content">
 
-            <ul>
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Profile</li>
+        </ol>
+    </nav>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="profile.html">Profile</a></li>
+    <section>
+        <h2>Student Profile</h2>
 
-            </ul>
+        <figure>
+            <img
+                src="https://placehold.co/150x150"
+                alt="Student profile placeholder image">
+            <figcaption>Student profile</figcaption>
+        </figure>
 
-        </nav>
+        <dl>
+            <dt>Name</dt>
+            <dd>Alex Student</dd>
 
-    </header>
+            <dt>Email</dt>
+            <dd>alex@studenthub.example</dd>
 
-    <main id="main-content">
+            <dt>Program</dt>
+            <dd>Artificial Intelligence and Machine Learning</dd>
 
-        <nav aria-label="Breadcrumb">
+            <dt>Semester</dt>
+            <dd>2</dd>
+        </dl>
+    </section>
 
-            <p>
+    <section>
+        <h2>Skills</h2>
 
-                <a href="index.html">Home</a> >
-                Profile
+        <ul>
+            <li>Python</li>
+            <li>HTML5</li>
+            <li>Problem Solving</li>
+            <li>Machine Learning Fundamentals</li>
+        </ul>
+    </section>
 
-            </p>
+</main>
 
-        </nav>
-
-        <section>
-
-            <h2>Personal Information</h2>
-
-            <img src="student.jpg" alt="Student Profile Photograph">
-
-            <article>
-
-                <p><strong>Name:</strong> Niyati Raiyani</p>
-
-                <p><strong>Department:</strong> AIML</p>
-
-                <p><strong>Email:</strong> niyati@example.com</p>
-
-                <p><strong>Mobile:</strong> 9876543210</p>
-
-            </article>
-
-        </section>
-
-        <aside>
-
-            <h3>Achievements</h3>
-
-            <ul>
-
-                <li>Python Certification</li>
-                <li>Web Development Workshop</li>
-                <li>Hackathon Participant</li>
-
-            </ul>
-
-        </aside>
-
-    </main>
-
-    <footer>
-
-        <p>&copy; 2026 StudentHub</p>
-
-    </footer>
+<footer>
+    <p>&copy; 2026 StudentHub. All rights reserved.</p>
+</footer>
 
 </body>
-
 </html>
