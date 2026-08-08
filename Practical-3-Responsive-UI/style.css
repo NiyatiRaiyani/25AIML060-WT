@@ -776,4 +776,15 @@ p {
     .event-card {
         flex-direction: column;
     }
+    .site-footer {
+    background: var(--primary-dark);
+    padding: 18px 0;
+    text-align: center;
+}
+
+    .site-footer p {
+    color: #cbd7e6;
+    font-size: 0.8rem;
+    margin: 0;
+}
 }
