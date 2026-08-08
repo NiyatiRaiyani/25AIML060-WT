@@ -1,92 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudentHub | Dashboard</title>
-
 </head>
 
 <body>
 
-    <a href="#main-content">Skip to Main Content</a>
+<a href="#main-content">Skip to main content</a>
 
-    <header>
+<header>
+    <h1>StudentHub Dashboard</h1>
 
-        <h1>Student Dashboard</h1>
+    <nav aria-label="Primary navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <nav aria-label="Main Navigation">
+<main id="main-content">
 
-            <ul>
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="events.html">Events</a></li>
+    <section>
+        <h2>Welcome, Student</h2>
 
-            </ul>
+        <p>
+            This dashboard provides quick access to student information.
+        </p>
+    </section>
 
-        </nav>
+    <section>
+        <h2>Academic Overview</h2>
 
-    </header>
+        <table>
+            <caption>Current academic information</caption>
 
-    <main id="main-content">
+            <thead>
+                <tr>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
 
-        <nav aria-label="Breadcrumb">
+            <tbody>
+                <tr>
+                    <td>Programming</td>
+                    <td>4</td>
+                    <td>In Progress</td>
+                </tr>
 
-            <p>
+                <tr>
+                    <td>Database Systems</td>
+                    <td>4</td>
+                    <td>In Progress</td>
+                </tr>
 
-                <a href="index.html">Home</a> >
-                Dashboard
+                <tr>
+                    <td>Web Technology</td>
+                    <td>3</td>
+                    <td>Completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-            </p>
+    <aside>
+        <h2>Quick Links</h2>
 
-        </nav>
+        <ul>
+            <li><a href="events.html">View Events</a></li>
+            <li><a href="profile.html">Update Profile</a></li>
+            <li><a href="feedback.html">Submit Feedback</a></li>
+        </ul>
+    </aside>
 
-        <section>
+</main>
 
-            <h2>Student Information</h2>
-
-            <article>
-
-                <p><strong>Name:</strong> Niyati Raiyani</p>
-
-                <p><strong>Enrollment No:</strong> 24AIML001</p>
-
-                <p><strong>Department:</strong> Artificial Intelligence & Machine Learning</p>
-
-                <p><strong>Semester:</strong> 3</p>
-
-            </article>
-
-        </section>
-
-        <aside>
-
-            <h3>Quick Access</h3>
-
-            <ul>
-
-                <li>Attendance</li>
-                <li>Assignments</li>
-                <li>Results</li>
-                <li>Events</li>
-
-            </ul>
-
-        </aside>
-
-    </main>
-
-    <footer>
-
-        <p>&copy; 2026 StudentHub</p>
-
-    </footer>
+<footer>
+    <p>&copy; 2026 StudentHub. All rights reserved.</p>
+</footer>
 
 </body>
-
 </html>

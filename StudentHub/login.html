@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudentHub | Login</title>
-
 </head>
 
 <body>
 
-    <a href="#main-content">Skip to Main Content</a>
+<a href="#main-content">Skip to main content</a>
 
-    <header>
+<header>
+    <h1>StudentHub</h1>
 
-        <h1>StudentHub</h1>
+    <nav aria-label="Primary navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="login.html" aria-current="page">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <nav aria-label="Main Navigation">
+<main id="main-content">
 
-            <ul>
+    <nav aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Login</li>
+        </ol>
+    </nav>
 
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
+    <section>
+        <h2>Student Login</h2>
 
-            </ul>
+        <form action="#" method="post">
 
-        </nav>
-
-    </header>
-
-    <main id="main-content">
-
-        <nav aria-label="Breadcrumb">
-
-            <p>
-
-                <a href="index.html">Home</a> >
-                Login
-
-            </p>
-
-        </nav>
-
-        <section>
-
-            <h2>Student Login</h2>
-
-            <form action="#" method="post">
+            <fieldset>
+                <legend>Login Information</legend>
 
                 <p>
-
-                    <label for="email">Email Address</label><br>
-
-                    <input type="email" id="email" name="email" required>
-
+                    <label for="login-email">Email Address</label>
+                    <input
+                        type="email"
+                        id="login-email"
+                        name="email"
+                        autocomplete="email"
+                        required>
                 </p>
 
                 <p>
-
-                    <label for="password">Password</label><br>
-
-                    <input type="password" id="password" name="password" required>
-
+                    <label for="login-password">Password</label>
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="password"
+                        autocomplete="current-password"
+                        required>
                 </p>
+            </fieldset>
 
-                <p>
+            <button type="submit">Login</button>
 
-                    <input type="submit" value="Login">
+        </form>
 
-                    <input type="reset" value="Clear">
+        <p>
+            New student?
+            <a href="register.html">Create an account</a>
+        </p>
+    </section>
 
-                </p>
+</main>
 
-            </form>
-
-        </section>
-
-    </main>
-
-    <footer>
-
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
-
-    </footer>
+<footer>
+    <p>&copy; 2026 StudentHub. All rights reserved.</p>
+</footer>
 
 </body>
-
 </html>
