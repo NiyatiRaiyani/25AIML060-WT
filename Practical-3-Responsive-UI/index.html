@@ -3,98 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive UI | Home</title>
+    <meta name="description" content="CHARUSAT University student portal">
+    <title>CHARUSAT University | Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="header">
-    <div class="container nav-container">
-        <h1 class="logo">EduConnect</h1>
+<header class="site-header">
+    <div class="container header-container">
 
-        <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand">
+            <span class="brand-name">CHARUSAT</span>
+            <span class="brand-subtitle">University</span>
+        </a>
+
+        <nav class="navigation" aria-label="Main Navigation">
             <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="registration.html">Registration</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="events.html">Events</a>
         </nav>
+
     </div>
 </header>
 
 <main>
 
-    <section class="hero">
+    <section class="hero-section">
         <div class="container hero-content">
-            <div>
-                <span class="badge">Responsive Web Interface</span>
-                <h2>Learn, Connect and Grow</h2>
+
+            <div class="hero-text">
+                <span class="eyebrow">CHARUSAT UNIVERSITY</span>
+
+                <h1>
+                    Learn, Connect
+                    <span>and Grow</span>
+                </h1>
+
                 <p>
-                    A modern responsive interface designed using HTML5,
-                    CSS Grid, Flexbox and Media Queries.
+                    Welcome to the student portal of CHARUSAT University.
+                    Explore academic information, registration services,
+                    student activities, and upcoming events.
                 </p>
 
-                <div class="hero-buttons">
-                    <a href="registration.html" class="btn primary-btn">
+                <div class="hero-actions">
+                    <a href="registration.html" class="btn btn-primary">
                         Register Now
                     </a>
-                    <a href="about.html" class="btn secondary-btn">
-                        Learn More
+
+                    <a href="events.html" class="btn btn-outline">
+                        View Events
                     </a>
                 </div>
             </div>
+
+            <div class="hero-card">
+                <span class="hero-card-label">STUDENT</span>
+                <h2>Niyati Raiyani</h2>
+                <p>Artificial Intelligence & Machine Learning</p>
+
+                <div class="hero-card-line"></div>
+
+                <div class="hero-card-info">
+                    <span>Student Portal</span>
+                    <span>2026–27</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
+
     <section class="section">
         <div class="container">
+
             <div class="section-heading">
-                <span class="section-label">Features</span>
-                <h2>Designed for Every Screen</h2>
+                <span class="eyebrow">EXPLORE</span>
+                <h2>Everything You Need</h2>
                 <p>
-                    The interface automatically adapts to mobile, tablet,
-                    and desktop devices.
+                    Access important academic information through
+                    a simple and organized interface.
                 </p>
             </div>
 
-            <div class="card-grid">
+            <div class="feature-grid">
 
-                <article class="card">
-                    <div class="card-icon">01</div>
-                    <h3>Responsive Design</h3>
+                <article class="feature-card">
+                    <span class="feature-number">01</span>
+                    <h3>Academic Information</h3>
                     <p>
-                        Flexible layouts provide a consistent experience
-                        across different screen sizes.
+                        View student details, academic information,
+                        and important educational resources.
                     </p>
                 </article>
 
-                <article class="card">
-                    <div class="card-icon">02</div>
-                    <h3>Modern Layout</h3>
+                <article class="feature-card">
+                    <span class="feature-number">02</span>
+                    <h3>Student Registration</h3>
                     <p>
-                        CSS Grid and Flexbox are used to create clean
-                        and organized page structures.
+                        Complete the registration form with your
+                        required personal and academic information.
                     </p>
                 </article>
 
-                <article class="card">
-                    <div class="card-icon">03</div>
-                    <h3>Easy Navigation</h3>
+                <article class="feature-card">
+                    <span class="feature-number">03</span>
+                    <h3>University Events</h3>
                     <p>
-                        Simple and consistent navigation helps users
-                        access every section easily.
+                        Explore upcoming workshops, seminars,
+                        competitions, and other activities.
                     </p>
                 </article>
 
             </div>
+
+        </div>
+    </section>
+
+
+    <section class="section section-light">
+        <div class="container stats-grid">
+
+            <div class="stat-item">
+                <strong>06</strong>
+                <span>Courses</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>12</strong>
+                <span>Assignments</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>92%</strong>
+                <span>Attendance</span>
+            </div>
+
+            <div class="stat-item">
+                <strong>04</strong>
+                <span>Upcoming Events</span>
+            </div>
+
         </div>
     </section>
 
 </main>
 
-<footer class="footer">
-    <p>&copy; 2026 EduConnect. All Rights Reserved.</p>
+
+<footer class="site-footer">
+    <div class="container footer-content">
+
+        <div class="student-info">
+            <strong>Niyati Raiyani</strong>
+            <span>CHARUSAT University</span>
+        </div>
+
+    </div>
 </footer>
 
 </body>
