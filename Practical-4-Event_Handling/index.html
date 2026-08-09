@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CHARUSAT University Interactive Student Portal">
+
+    <title>CHARUSAT | Student Portal</title>
+
+    <style>
+
+        /* =========================================
+           GLOBAL STYLES
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.6;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+        body.dark {
+            background: #111827;
+            color: #f3f4f6;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================================
+           PROFESSIONAL HEADER
+        ========================================= */
+
+        header {
+            background: #123f70;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .top-header {
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 14px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* University Logo */
+
+        .university-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-container {
+            width: 78px;
+            height: 65px;
+
+            background: white;
+
+            border-radius: 7px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .logo-container img {
+            width: 72px;
+            height: 60px;
+
+            object-fit: contain;
+        }
+
+
+        /* University Name */
+
+        .university-name h1 {
+            font-size: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .university-name p {
+            font-size: 12px;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+
+        .portal-label {
+            display: inline-block;
+
+            margin-top: 5px;
+
+            font-size: 11px;
+
+            padding: 3px 9px;
+
+            border: 1px solid rgba(255,255,255,0.45);
+
+            border-radius: 20px;
+        }
+
+
+        /* Header Right */
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        /* Theme Button */
+
+        .theme-btn {
+            border: none;
+
+            background: white;
+            color: #123f70;
+
+            padding: 9px 13px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            background: #eef4fb;
+        }
+
+
+        /* Hamburger */
+
+        .menu-btn {
+            display: none;
+
+            border: 1px solid white;
+
+            background: transparent;
+
+            color: white;
+
+            padding: 7px 11px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 19px;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        .navigation-bar {
+            background: #0d335c;
+        }
+
+        .navigation-content {
+            max-width: 1250px;
+            margin: auto;
+
+            min-height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+        }
+
+        .nav-links a {
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            padding: 13px 5px;
+
+            display: block;
+
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            bottom: 6px;
+            left: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: white;
+
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================
+           NOTIFICATION
+        ========================================= */
+
+        .notification {
+            max-width: 1200px;
+
+            margin: 20px auto 0;
+
+            padding: 14px 18px;
+
+            background: #e7f1ff;
+
+            border-left: 5px solid #1769aa;
+
+            border-radius: 7px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        body.dark .notification {
+            background: #1e3a5f;
+        }
+
+        .notification strong {
+            color: #123f70;
+        }
+
+        body.dark .notification strong {
+            color: #93c5fd;
+        }
+
+        .close-notification {
+            border: none;
+
+            background: transparent;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            color: inherit;
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        main {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 20px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            margin-top: 22px;
+
+            padding: 58px 30px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #123f70,
+                    #28639b
+                );
+
+            color: white;
+
+            text-align: center;
+
+            box-shadow:
+                0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .hero h2 {
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 760px;
+
+            margin: auto;
+
+            font-size: 15px;
+
+            opacity: 0.95;
+        }
+
+        .hero-badges {
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .hero-badge {
+            padding: 7px 14px;
+
+            border: 1px solid
+                rgba(255,255,255,0.5);
+
+            border-radius: 20px;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           SECTION HEADING
+        ========================================= */
+
+        .section-heading {
+            margin: 48px 0 20px;
+        }
+
+        .section-heading h2 {
+            color: #123f70;
+
+            font-size: 25px;
+
+            margin-bottom: 5px;
+        }
+
+        body.dark .section-heading h2 {
+            color: #60a5fa;
+        }
+
+        .section-heading p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        body.dark .section-heading p {
+            color: #cbd5e1;
+        }
+
+
+        /* =========================================
+           EVENT SLIDER
+        ========================================= */
+
+        .slider-wrapper {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+        }
+
+        .slide {
+            display: none;
+
+            min-height: 270px;
+
+            padding: 42px 35px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 16px rgba(0,0,0,0.08);
+
+            animation: slideAnimation 0.5s ease;
+        }
+
+        body.dark .slide {
+            background: #1f2937;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .event-date {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            background: #e5f0ff;
+
+            color: #123f70;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+        body.dark .event-date {
+            background: #334155;
+
+            color: #bfdbfe;
+        }
+
+        .slide h3 {
+            color: #123f70;
+
+            font-size: 26px;
+
+            margin-bottom: 10px;
+        }
+
+        body.dark .slide h3 {
+            color: #60a5fa;
+        }
+
+        .slide p {
+            max-width: 850px;
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .slide-details {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        body.dark .slide-details {
+            color: #cbd5e1;
+        }
+
+        .slider-controls {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+        }
+
+        .slider-controls button {
+            border: none;
+
+            background: #123f70;
+
+            color: white;
+
+            padding: 9px 18px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease;
+        }
+
+        .slider-controls button:hover {
+            transform: translateY(-2px);
+        }
+
+        @keyframes slideAnimation {
+
+            from {
+                opacity: 0;
+                transform: translateX(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        }
+
+
+        /* =========================================
+           EVENT CARDS
+        ========================================= */
+
+        .event-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .event-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.07);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        body.dark .event-card {
+            background: #1f2937;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 8px 22px rgba(0,0,0,0.12);
+        }
+
+        .event-icon {
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .event-card h3 {
+            color: #123f70;
+
+            font-size: 19px;
+
+            margin-bottom: 8px;
+        }
+
+        body.dark .event-card h3 {
+            color: #60a5fa;
+        }
+
+        .event-card p {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        body.dark .event-card p {
+            color: #cbd5e1;
+        }
+
+        .primary-btn {
+            margin-top: 16px;
+
+            border: none;
+
+            background: #123f70;
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .primary-btn:hover {
+            transform: scale(1.04);
+
+            background: #1c5b91;
+        }
+
+
+        /* =========================================
+           FAQ
+        ========================================= */
+
+        .faq-container {
+            max-width: 900px;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        body.dark .faq-item {
+            background: #1f2937;
+        }
+
+        .faq-question {
+            width: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            color: inherit;
+
+            padding: 18px;
+
+            text-align: left;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+
+            overflow: hidden;
+
+            padding: 0 18px;
+
+            transition:
+                max-height 0.3s ease,
+                padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 180px;
+
+            padding:
+                0 18px 18px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform:
+                rotate(45deg);
+        }
+
+
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.65);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 550px;
+
+            background: white;
+
+            color: #1f2937;
+
+            padding: 32px;
+
+            border-radius: 12px;
+
+            animation:
+                modalAnimation 0.3s ease;
+        }
+
+        body.dark .modal-content {
+            background: #1f2937;
+
+            color: white;
+        }
+
+        .modal-content h2 {
+            color: #123f70;
+
+            margin-bottom: 12px;
+        }
+
+        body.dark .modal-content h2 {
+            color: #60a5fa;
+        }
+
+        .modal-close {
+            position: absolute;
+
+            top: 10px;
+
+            right: 15px;
+
+            border: none;
+
+            background: transparent;
+
+            color: inherit;
+
+            font-size: 26px;
+
+            cursor: pointer;
+        }
+
+        .modal-list {
+            margin:
+                15px 0 0 20px;
+        }
+
+        @keyframes modalAnimation {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            margin-top: 50px;
+
+            background: #0d335c;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        footer p {
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        footer small {
+            display: block;
+
+            margin-top: 5px;
+
+            opacity: 0.8;
+        }
+
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .top-header {
+                flex-wrap: wrap;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .navigation-content {
+                justify-content: flex-start;
+
+                padding: 0 25px;
+            }
+
+            .nav-links {
+                display: none;
+
+                width: 100%;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 0;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+            }
+
+            .event-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .top-header {
+                padding: 12px 15px;
+            }
+
+            .logo-container {
+                width: 65px;
+
+                height: 58px;
+            }
+
+            .logo-container img {
+                width: 60px;
+
+                height: 54px;
+            }
+
+            .university-name h1 {
+                font-size: 16px;
+            }
+
+            .university-name p {
+                font-size: 10px;
+            }
+
+            .portal-label {
+                font-size: 9px;
+            }
+
+            .header-right {
+                margin-left: auto;
+            }
+
+            .theme-btn {
+                font-size: 11px;
+
+                padding: 8px 9px;
+            }
+
+            .navigation-content {
+                padding: 0 15px;
+            }
+
+            .notification {
+                margin: 15px;
+
+                font-size: 13px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 42px 20px;
+            }
+
+            .hero h2 {
+                font-size: 25px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide {
+                padding: 35px 22px;
+            }
+
+            .slide h3 {
+                font-size: 22px;
+            }
+
+            .slide-details {
+                flex-direction: column;
+
+                gap: 6px;
+            }
+
+            .section-heading h2 {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         PROFESSIONAL HEADER
+    ========================================== -->
+
+    <header>
+
+        <div class="top-header">
+
+
+            <!-- CHARUSAT Branding -->
+
+            <div class="university-brand">
+
+                <div class="logo-container">
+
+                    <img
+                        src="charusat-logo.png"
+                        alt="CHARUSAT University Logo">
+
+                </div>
+
+
+                <div class="university-name">
+
+                    <h1>
+                        CHARUSAT University
+                    </h1>
+
+                    <p>
+                        Charotar University of Science and Technology
+                    </p>
+
+                    <span class="portal-label">
+                        Student Interactive Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Header Controls -->
+
+            <div class="header-right">
+
+                <button
+                    class="theme-btn"
+                    id="themeBtn"
+                    aria-label="Switch colour theme">
+
+                    🌙 Dark Mode
+
+                </button>
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Navigation Bar -->
+
+        <div class="navigation-bar">
+
+            <div class="navigation-content">
+
+                <ul
+                    class="nav-links"
+                    id="navLinks">
+
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#events">
+                            Events
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#activities">
+                            Activities
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#faq">
+                            FAQ
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main id="home">
+
+
+        <!-- Notification Banner -->
+
+        <section
+            class="notification"
+            id="notification"
+            role="status">
+
+            <div>
+
+                <strong>
+                    Campus Update:
+                </strong>
+
+                New academic workshops,
+                technical events and student
+                activities have been announced.
+
+            </div>
+
+
+            <button
+                class="close-notification"
+                id="closeNotification"
+                aria-label="Close notification">
+
+                ×
+
+            </button>
+
+        </section>
+
+
+        <!-- Hero Section -->
+
+        <section class="hero">
+
+            <h2>
+                Welcome to CHARUSAT Student Portal
+            </h2>
+
+            <p>
+                A professional interactive platform
+                for students to explore academic events,
+                technical workshops, project activities
+                and university programs.
+            </p>
+
+
+            <div class="hero-badges">
+
+                <span class="hero-badge">
+                    CHARUSAT University
+                </span>
+
+                <span class="hero-badge">
+                    AIML Department
+                </span>
+
+                <span class="hero-badge">
+                    Student Activities
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FEATURED EVENTS / SLIDER
+        ========================================== -->
+
+        <section id="events">
+
+            <div class="section-heading">
+
+                <h2>
+                    Featured University Events
+                </h2>
+
+                <p>
+                    Explore upcoming academic,
+                    technical and student development
+                    activities.
+                </p>
+
+            </div>
+
+
+            <div class="slider-wrapper">
+
+
+                <!-- Event 1 -->
+
+                <article class="slide active">
+
+                    <span class="event-date">
+                        AUGUST 2026
+                    </span>
+
+                    <h3>
+                        AI & Machine Learning Workshop
+                    </h3>
+
+                    <p>
+                        An interactive technical workshop
+                        introducing students to Artificial
+                        Intelligence, Machine Learning
+                        concepts and emerging technologies.
+                    </p>
+
+                    <div class="slide-details">
+
+                        <span>
+                            📍 CHARUSAT Campus
+                        </span>
+
+                        <span>
+                            🕒 10:00 AM – 1:00 PM
+                        </span>
+
+                        <span>
+                            👥 AIML Students
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Event 2 -->
+
+                <article class="slide">
+
+                    <span class="event-date">
+                        SEPTEMBER 2026
+                    </span>
+
+                    <h3>
+                        CHARUSAT Innovation & Project Expo
+                    </h3>
+
+                    <p>
+                        Students present innovative
+                        projects, prototypes and technology
+                        solutions developed as part of
+                        their academic learning.
+                    </p>
+
+                    <div class="slide-details">
+
+                        <span>
+                            📍 University Auditorium
+                        </span>
+
+                        <span>
+                            🕒 9:30 AM – 4:00 PM
+                        </span>
+
+                        <span>
+                            👥 All Departments
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Event 3 -->
+
+                <article class="slide">
+
+                    <span class="event-date">
+                        SEPTEMBER 2026
+                    </span>
+
+                    <h3>
+                        Technical Coding Challenge
+                    </h3>
+
+                    <p>
+                        A programming challenge designed
+                        to develop logical thinking,
+                        coding ability and problem-solving
+                        skills among students.
+                    </p>
+
+                    <div class="slide-details">
+
+                        <span>
+                            📍 Computing Laboratory
+                        </span>
+
+                        <span>
+                            🕒 11:00 AM – 2:00 PM
+                        </span>
+
+                        <span>
+                            👥 Undergraduate Students
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Event 4 -->
+
+                <article class="slide">
+
+                    <span class="event-date">
+                        OCTOBER 2026
+                    </span>
+
+                    <h3>
+                        Student Innovation & Startup Seminar
+                    </h3>
+
+                    <p>
+                        A knowledge-sharing session focused
+                        on innovation, entrepreneurship,
+                        startup ideas and technology-driven
+                        career opportunities.
+                    </p>
+
+                    <div class="slide-details">
+
+                        <span>
+                            📍 Seminar Hall
+                        </span>
+
+                        <span>
+                            🕒 2:00 PM – 4:00 PM
+                        </span>
+
+                        <span>
+                            👥 All Interested Students
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="slider-controls">
+
+                <button id="previousBtn">
+                    ← Previous
+                </button>
+
+                <button id="nextBtn">
+                    Next →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             STUDENT ACTIVITIES
+        ========================================== -->
+
+        <section id="activities">
+
+            <div class="section-heading">
+
+                <h2>
+                    Student Activities
+                </h2>
+
+                <p>
+                    Opportunities for academic,
+                    technical and professional development.
+                </p>
+
+            </div>
+
+
+            <div class="event-grid">
+
+
+                <!-- Card 1 -->
+
+                <article class="event-card">
+
+                    <div class="event-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Technical Workshops
+                    </h3>
+
+                    <p>
+                        Practical learning sessions covering
+                        programming, Artificial Intelligence,
+                        Machine Learning, Web Development
+                        and emerging technologies.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        id="workshopBtn">
+
+                        View Details
+
+                    </button>
+
+                </article>
+
+
+                <!-- Card 2 -->
+
+                <article class="event-card">
+
+                    <div class="event-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Project Competitions
+                    </h3>
+
+                    <p>
+                        Students can participate in project
+                        competitions and demonstrate their
+                        creativity, technical knowledge and
+                        problem-solving abilities.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        id="projectBtn">
+
+                        Learn More
+
+                    </button>
+
+                </article>
+
+
+                <!-- Card 3 -->
+
+                <article class="event-card">
+
+                    <div class="event-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Student Development
+                    </h3>
+
+                    <p>
+                        Activities designed to improve
+                        communication, leadership, teamwork,
+                        presentation and professional skills.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        id="developmentBtn">
+
+                        Explore
+
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FAQ
+        ========================================== -->
+
+        <section id="faq">
+
+            <div class="section-heading">
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+                <p>
+                    Important information related to
+                    university events and student activities.
+                </p>
+
+            </div>
+
+
+            <div class="faq-container">
+
+
+                <!-- FAQ 1 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        aria-expanded="false">
+
+                        <span>
+                            How can students register
+                            for university events?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Students can register through
+                            the official registration process
+                            provided by the respective
+                            department or event committee.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAQ 2 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        aria-expanded="false">
+
+                        <span>
+                            Who can participate in
+                            technical events?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Eligibility depends on the
+                            individual event. Many technical
+                            workshops and competitions are
+                            open to undergraduate students.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAQ 3 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        aria-expanded="false">
+
+                        <span>
+                            Where are university events
+                            conducted?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Events may be conducted in
+                            classrooms, computer laboratories,
+                            seminar halls, auditoriums or
+                            other designated university venues.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAQ 4 -->
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        aria-expanded="false">
+
+                        <span>
+                            How can students receive
+                            event updates?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Students should regularly check
+                            official university announcements,
+                            department notices and authorized
+                            communication channels.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL POPUP
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="eventModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close dialog">
+
+                ×
+
+            </button>
+
+
+            <h2 id="modalTitle">
+                AI & Machine Learning Workshop
+            </h2>
+
+
+            <p>
+                This workshop provides students with
+                practical exposure to Artificial Intelligence,
+                Machine Learning and current technology trends.
+            </p>
+
+
+            <ul class="modal-list">
+
+                <li>
+                    Introduction to Artificial Intelligence
+                </li>
+
+                <li>
+                    Machine Learning Fundamentals
+                </li>
+
+                <li>
+                    Practical Problem Solving
+                </li>
+
+                <li>
+                    Emerging Technology Trends
+                </li>
+
+                <li>
+                    Career Opportunities in AIML
+                </li>
+
+            </ul>
+
+
+            <button
+                class="primary-btn"
+                id="modalOkBtn">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            @ CHARUSAT University
+        </p>
+
+        <small>
+            Student Interactive Portal |
+            AIML Department
+        </small>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+
+        /* =========================================
+           HAMBURGER MENU
+        ========================================== */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.toggle("show");
+
+                const isOpen =
+                    navLinks.classList.contains("show");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        /* Close menu after navigation */
+
+        const navigationItems =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+
+        navigationItems.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.classList.remove(
+                            "show"
+                        );
+
+                        menuBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           NOTIFICATION BANNER
+        ========================================== */
+
+        const notification =
+            document.getElementById(
+                "notification"
+            );
+
+        const closeNotification =
+            document.getElementById(
+                "closeNotification"
+            );
+
+
+        closeNotification.addEventListener(
+            "click",
+            function () {
+
+                notification.style.display =
+                    "none";
+
+            }
+        );
+
+
+        /* =========================================
+           FAQ ACCORDION
+        ========================================== */
+
+        const faqQuestions =
+            document.querySelectorAll(
+                ".faq-question"
+            );
+
+
+        faqQuestions.forEach(
+            function (question) {
+
+                question.addEventListener(
+                    "click",
+                    function () {
+
+                        const currentItem =
+                            question.parentElement;
+
+                        const isAlreadyOpen =
+                            currentItem
+                                .classList
+                                .contains("open");
+
+
+                        /* Close all FAQ items */
+
+                        document
+                            .querySelectorAll(".faq-item")
+                            .forEach(
+                                function (item) {
+
+                                    item.classList
+                                        .remove("open");
+
+                                    item
+                                        .querySelector(
+                                            ".faq-question"
+                                        )
+                                        .setAttribute(
+                                            "aria-expanded",
+                                            "false"
+                                        );
+
+                                }
+                            );
+
+
+                        /* Open selected item */
+
+                        if (!isAlreadyOpen) {
+
+                            currentItem
+                                .classList
+                                .add("open");
+
+                            question.setAttribute(
+                                "aria-expanded",
+                                "true"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           MODAL POPUP
+        ========================================== */
+
+        const eventModal =
+            document.getElementById(
+                "eventModal"
+            );
+
+        const modalTitle =
+            document.getElementById(
+                "modalTitle"
+            );
+
+        const workshopBtn =
+            document.getElementById(
+                "workshopBtn"
+            );
+
+        const projectBtn =
+            document.getElementById(
+                "projectBtn"
+            );
+
+        const developmentBtn =
+            document.getElementById(
+                "developmentBtn"
+            );
+
+        const modalClose =
+            document.getElementById(
+                "modalClose"
+            );
+
+        const modalOkBtn =
+            document.getElementById(
+                "modalOkBtn"
+            );
+
+
+        function openModal(title) {
+
+            modalTitle.textContent =
+                title;
+
+            eventModal.classList.add(
+                "show"
+            );
+
+        }
+
+
+        function closeModal() {
+
+            eventModal.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        workshopBtn.addEventListener(
+            "click",
+            function () {
+
+                openModal(
+                    "AI & Machine Learning Workshop"
+                );
+
+            }
+        );
+
+
+        projectBtn.addEventListener(
+            "click",
+            function () {
+
+                openModal(
+                    "CHARUSAT Innovation & Project Expo"
+                );
+
+            }
+        );
+
+
+        developmentBtn.addEventListener(
+            "click",
+            function () {
+
+                openModal(
+                    "Student Development Program"
+                );
+
+            }
+        );
+
+
+        modalClose.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        modalOkBtn.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        /* Close modal by clicking outside */
+
+        eventModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target === eventModal
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        /* Close modal with Escape key */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           EVENT SLIDER
+        ========================================== */
+
+        const slides =
+            document.querySelectorAll(
+                ".slide"
+            );
+
+        const nextBtn =
+            document.getElementById(
+                "nextBtn"
+            );
+
+        const previousBtn =
+            document.getElementById(
+                "previousBtn"
+            );
+
+
+        let currentSlide = 0;
+
+
+        function showSlide(index) {
+
+            slides.forEach(
+                function (slide) {
+
+                    slide.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            slides[index]
+                .classList
+                .add("active");
+
+        }
+
+
+        nextBtn.addEventListener(
+            "click",
+            function () {
+
+                currentSlide =
+                    (currentSlide + 1)
+                    % slides.length;
+
+                showSlide(
+                    currentSlide
+                );
+
+            }
+        );
+
+
+        previousBtn.addEventListener(
+            "click",
+            function () {
+
+                currentSlide =
+                    (
+                        currentSlide -
+                        1 +
+                        slides.length
+                    )
+                    % slides.length;
+
+                showSlide(
+                    currentSlide
+                );
+
+            }
+        );
+
+
+        /* Automatic slider */
+
+        setInterval(
+            function () {
+
+                currentSlide =
+                    (currentSlide + 1)
+                    % slides.length;
+
+                showSlide(
+                    currentSlide
+                );
+
+            },
+            5000
+        );
+
+
+        /* =========================================
+           LIGHT / DARK THEME
+           USING LOCAL STORAGE
+        ========================================== */
+
+        const themeBtn =
+            document.getElementById(
+                "themeBtn"
+            );
+
+
+        function updateThemeButton() {
+
+            if (
+                document.body
+                    .classList
+                    .contains("dark")
+            ) {
+
+                themeBtn.textContent =
+                    "☀️ Light Mode";
+
+            } else {
+
+                themeBtn.textContent =
+                    "🌙 Dark Mode";
+
+            }
+
+        }
+
+
+        themeBtn.addEventListener(
+            "click",
+            function () {
+
+                document.body
+                    .classList
+                    .toggle("dark");
+
+
+                const selectedTheme =
+                    document.body
+                        .classList
+                        .contains("dark")
+                        ? "dark"
+                        : "light";
+
+
+                localStorage.setItem(
+                    "charusatTheme",
+                    selectedTheme
+                );
+
+
+                updateThemeButton();
+
+            }
+        );
+
+
+        /* Restore saved theme */
+
+        const savedTheme =
+            localStorage.getItem(
+                "charusatTheme"
+            );
+
+
+        if (
+            savedTheme === "dark"
+        ) {
+
+            document.body
+                .classList
+                .add("dark");
+
+        }
+
+
+        updateThemeButton();
+
+
+        /* =========================================
+           BROWSER CONSOLE TESTING
+        ========================================== */
+
+        console.log(
+            "CHARUSAT Student Portal loaded successfully."
+        );
+
+        console.log(
+            "DOM manipulation and event handling are active."
+        );
+
+        console.log(
+            "Theme preference is stored using localStorage."
+        );
+
+    </script>
+
+</body>
+
+</html>
