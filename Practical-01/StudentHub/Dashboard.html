@@ -1,47 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>StudentHub - Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | Dashboard</title>
 </head>
 <body>
 
-    <h1>StudentHub</h1>
+    <header>
+        <h1>StudentHub Dashboard</h1>
+        <p>Welcome, Niyati Raiyani</p>
 
-    <nav>
-        <a href="dashboard.html">Home</a> |
-        <a href="profile.html">Profile</a> |
-        <a href="timetable.html">Timetable</a> |
-        <a href="subjects.html">Subjects</a> |
-        <a href="materials.html">Materials</a> |
-        <a href="assignments.html">Assignments</a> |
-        <a href="announcements.html">Announcements</a> |
-        <a href="events.html">Events</a> |
-        <a href="attendance.html">Attendance</a> |
-        <a href="help.html">Help</a> |
-        <a href="index.html">Logout</a>
-    </nav>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="announcement.html">Announcements</a> |
+            <a href="assignment.html">Assignments</a> |
+            <a href="attendance.html">Attendance</a> |
+            <a href="event.html">Events</a> |
+            <a href="material.html">Materials</a> |
+            <a href="subjects.html">Subjects</a> |
+            <a href="timetable.html">Timetable</a> |
+            <a href="profile.html">Profile</a> |
+            <a href="help.html">Help</a>
+        </nav>
+    </header>
 
-    <hr>
+    <main>
 
-    <h2>Welcome to StudentHub</h2>
-    <p>Welcome, Student!</p>
+        <section>
+            <h2>Dashboard Overview</h2>
 
-    <h3>Quick Overview</h3>
+            <table border="1">
+                <tr>
+                    <th>Module</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>Assignments</td>
+                    <td>3 Pending</td>
+                    <td><a href="assignment.html">View</a></td>
+                </tr>
+                <tr>
+                    <td>Attendance</td>
+                    <td>88%</td>
+                    <td><a href="attendance.html">View</a></td>
+                </tr>
+                <tr>
+                    <td>Announcements</td>
+                    <td>4 New</td>
+                    <td><a href="announcement.html">View</a></td>
+                </tr>
+                <tr>
+                    <td>Events</td>
+                    <td>2 Upcoming</td>
+                    <td><a href="event.html">View</a></td>
+                </tr>
+            </table>
+        </section>
 
-    <ul>
-        <li>Total Subjects: 6</li>
-        <li>Pending Assignments: 4</li>
-        <li>Attendance: 85%</li>
-        <li>Upcoming Events: 2</li>
-    </ul>
+        <section>
+            <h2>Today's Highlights</h2>
+            <ul>
+                <li>New assignment has been added.</li>
+                <li>Department event registration is open.</li>
+                <li>Latest study material is available.</li>
+            </ul>
+        </section>
 
-    <h3>Recent Announcements</h3>
+    </main>
 
-    <ul>
-        <li>Internal examination schedule announced.</li>
-        <li>New study material uploaded.</li>
-        <li>Assignment submission deadline updated.</li>
-    </ul>
+    <footer>
+        <p>&copy; 2026 StudentHub | CHARUSAT University</p>
+    </footer>
 
 </body>
 </html>
