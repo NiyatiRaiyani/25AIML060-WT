@@ -1,14 +1,18 @@
-# StudentHub – Student Portal
+# StudentHub – Practical 1
+
+## Practical Title
+
+Project Initiation, Requirement Analysis, Sitemap, Wireframe, and GitHub Setup
 
 ## Project Overview
 
-StudentHub is a basic student portal developed as part of Practical 1.
-The project focuses on planning and creating a structured multi-page
-student portal using HTML5.
+StudentHub is a student portal project developed as a semester-long
+web application project. Practical 1 focuses on project initiation,
+requirement analysis, sitemap planning, wireframe design, project
+structure, README preparation, and GitHub setup.
 
-The portal provides students with easy access to academic information,
-assignments, attendance, announcements, events, study materials,
-subjects, timetable, profile information, and help services.
+This practical establishes the foundation of the StudentHub project
+for further practical implementations.
 
 ## Student Information
 
@@ -17,25 +21,61 @@ subjects, timetable, profile information, and help services.
 - Program: B.Tech Artificial Intelligence and Machine Learning
 - University: CHARUSAT University
 
+## Aim
+
+To initiate and plan the StudentHub student portal by identifying
+its requirements, user roles, modules, navigation flow, page structure,
+wireframes, and GitHub project setup.
+
 ## Objectives
 
-- To understand the basic structure of a web application.
-- To identify the major modules required for a student portal.
-- To create a structured multi-page HTML project.
-- To implement navigation between different HTML pages.
-- To organize the project using a proper folder structure.
-- To maintain the project using Git and GitHub.
+- To analyze the requirements of the StudentHub portal.
+- To identify major user roles and system modules.
+- To prepare a sitemap for the portal.
+- To design low-fidelity wireframes.
+- To define a proper project folder structure.
+- To create and maintain a GitHub repository.
+- To prepare project documentation using README.md.
 
-## Technologies Used
+## User Roles
 
-- HTML5
-- Visual Studio Code
-- Git
-- GitHub
+### Student
 
-## Project Pages
+- View dashboard
+- Check announcements
+- View assignments
+- Check attendance
+- View events
+- Access study materials
+- View subjects
+- Check timetable
+- Manage profile
+- Access help and support
 
-The StudentHub portal contains the following pages:
+### Administrator
+
+- Manage student information
+- Manage announcements
+- Manage assignments
+- Manage events
+- Manage academic content
+
+## Main Modules
+
+- Dashboard
+- Announcements
+- Assignments
+- Attendance
+- Events
+- Study Materials
+- Subjects
+- Timetable
+- Profile
+- Help and Support
+
+## Planned Pages
+
+The StudentHub portal contains the following planned pages:
 
 1. Home
 2. Dashboard
@@ -43,26 +83,26 @@ The StudentHub portal contains the following pages:
 4. Assignments
 5. Attendance
 6. Events
-7. Help
-8. Study Materials
-9. Profile
-10. Subjects
-11. Timetable
+7. Materials
+8. Subjects
+9. Timetable
+10. Profile
+11. Help
 
-## Project Structure
+## Sitemap
 
 ```text
-StudentHub/
+StudentHub
 │
-├── index.html
-├── dashboard.html
-├── announcement.html
-├── assignment.html
-├── attendance.html
-├── event.html
-├── help.html
-├── material.html
-├── profile.html
-├── subjects.html
-├── timetable.html
-└── README.md
+└── Home
+    │
+    ├── Dashboard
+    ├── Announcements
+    ├── Assignments
+    ├── Attendance
+    ├── Events
+    ├── Materials
+    ├── Subjects
+    ├── Timetable
+    ├── Profile
+    └── Help
