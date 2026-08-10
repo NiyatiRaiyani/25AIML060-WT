@@ -1,138 +1,68 @@
-StudentHub
-StudentHub is a student portal website made to keep useful college and academic information in one place. Students can use it to check their timetable, subjects, assignments, study material, announcements, events, faculty details and attendance.
+# StudentHub – Student Portal
 
-Practical 1
-Project Initiation, Requirement Analysis, Sitemap, Wireframe and GitHub Setup
+## Project Overview
 
-Project Overview
-The main idea of StudentHub is to make a simple portal where students can find their regular academic information without checking different sources.
+StudentHub is a basic student portal developed as part of Practical 1.
+The project focuses on planning and creating a structured multi-page
+student portal using HTML5.
 
-In this practical, the basic requirements of the project are identified and the initial website structure is prepared.
+The portal provides students with easy access to academic information,
+assignments, attendance, announcements, events, study materials,
+subjects, timetable, profile information, and help services.
 
-Main Users
-Student
-Login to the portal
-Check dashboard
-View profile
-Check timetable
-View subjects
-Access study material
-Check assignments
-Read announcements
-View events
-Check faculty details
-View attendance
-Get help and support
-Admin
-Manage student and faculty information
-Manage announcements
-Manage events
-Manage portal content
-Website Pages
-The StudentHub project contains these pages:
+## Student Information
 
-Login
-Dashboard
-Profile
-Timetable
-Subjects
-Study Materials
-Assignments
-Announcements
-Events
-Attendance
-Help
-Page Flow
-Login
-  |
-  v
-Dashboard
-  |
-  +---- Profile
-  |
-  +---- Timetable
-  |
-  +---- Subjects
-  |
-  +---- Study Materials
-  |
-  +---- Assignments
-  |
-  +---- Announcements
-  |
-  +---- Events
-  |
-  +---- Attendance
-  |
-  +---- Help
-Technologies
-The following tools are used for this practical:
+- Name: Niyati Raiyani
+- Student ID: 25AIML060
+- Program: B.Tech Artificial Intelligence and Machine Learning
+- University: CHARUSAT University
 
-HTML5
-VS Code
-Git
-GitHub
-Draw.io / Figma
-Project Files
+## Objectives
+
+- To understand the basic structure of a web application.
+- To identify the major modules required for a student portal.
+- To create a structured multi-page HTML project.
+- To implement navigation between different HTML pages.
+- To organize the project using a proper folder structure.
+- To maintain the project using Git and GitHub.
+
+## Technologies Used
+
+- HTML5
+- Visual Studio Code
+- Git
+- GitHub
+
+## Project Pages
+
+The StudentHub portal contains the following pages:
+
+1. Home
+2. Dashboard
+3. Announcements
+4. Assignments
+5. Attendance
+6. Events
+7. Help
+8. Study Materials
+9. Profile
+10. Subjects
+11. Timetable
+
+## Project Structure
+
+```text
 StudentHub/
 │
 ├── index.html
 ├── dashboard.html
-├── profile.html
-├── timetable.html
-├── subjects.html
-├── materials.html
-├── assignments.html
-├── announcements.html
-├── events.html
+├── announcement.html
+├── assignment.html
 ├── attendance.html
+├── event.html
 ├── help.html
+├── material.html
+├── profile.html
+├── subjects.html
+├── timetable.html
 └── README.md
-Page Navigation
-All the HTML pages are connected using hyperlinks.
-
-Example:
-
-<a href="dashboard.html">Dashboard</a>
-The href attribute contains the name of the page that should open when the link is clicked.
-
-Sitemap
-The sitemap shows the complete structure of the StudentHub website. It starts from the Login page and then connects to the Dashboard and other main pages.
-
-Wireframe
-A basic low-fidelity wireframe was prepared to decide the position of the main elements before developing the pages.
-
-It includes basic sections such as:
-
-Header
-Navigation
-Page heading
-Main content
-Tables or lists
-Footer/content area where required
-GitHub
-Git is used to keep track of changes made during the project. The project files are uploaded to GitHub so that the work can be maintained throughout the semester.
-
-Example commands:
-
-git init
-git add .
-git commit -m "Add StudentHub HTML pages"
-git push
-New commits will be added after completing important practical work.
-
-Future Work
-The project can be developed further by adding:
-
-CSS design
-Responsive layout
-JavaScript features
-Login functionality
-Database
-Backend
-REST API
-Assignment submission
-Attendance management
-Notifications
-Current Status
-Practical 1 includes the initial requirements, page planning, sitemap, wireframe, HTML pages, navigation structure and GitHub setup.
