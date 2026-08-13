@@ -2,7 +2,6 @@
 
 const form = document.getElementById("registrationForm");
 
-
 // Get Inputs
 
 const nameInput =

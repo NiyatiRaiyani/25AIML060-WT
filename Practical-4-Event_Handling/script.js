@@ -1,171 +1,29 @@
-/* =========================================
-   StudentHub - Practical 4
-   JavaScript DOM Manipulation
-   ========================================= */
+// ===============================
+// DOM ELEMENT SELECTION
+// ===============================
 
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-/* =========================================
-   1. Notification Banner
-   ========================================= */
+const themeBtn = document.getElementById("themeBtn");
 
 const notification = document.getElementById("notification");
 const closeNotification =
     document.getElementById("closeNotification");
 
-closeNotification.addEventListener("click", function () {
-    notification.style.display = "none";
-});
-
-
-/* =========================================
-   2. Hamburger Menu
-   ========================================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-
-menuBtn.addEventListener("click", function () {
-
-    navMenu.classList.toggle("open");
-
-    const isOpen = navMenu.classList.contains("open");
-
-    menuBtn.setAttribute("aria-expanded", isOpen);
-
-    menuBtn.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
-});
-
-
-/* Close mobile menu after clicking navigation link */
-
-const navLinks = document.querySelectorAll("nav a");
-
-navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-        navMenu.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-    });
-
-});
-
-
-/* =========================================
-   3. Dark / Light Theme
-   ========================================= */
-
-const themeBtn = document.getElementById("themeBtn");
-
-function updateThemeButton() {
-
-    if (document.body.classList.contains("dark")) {
-
-        themeBtn.textContent = "☀️ Light Mode";
-
-    } else {
-
-        themeBtn.textContent = "🌙 Dark Mode";
-    }
-}
-
-
-/* Restore saved theme */
-
-const savedTheme = localStorage.getItem("studentHubTheme");
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-}
-
-updateThemeButton();
-
-
-/* Change theme */
-
-themeBtn.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark");
-
-    const isDark =
-        document.body.classList.contains("dark");
-
-    localStorage.setItem(
-        "studentHubTheme",
-        isDark ? "dark" : "light"
-    );
-
-    updateThemeButton();
-});
-
-
-/* =========================================
-   4. FAQ Accordion
-   ========================================= */
+const modal = document.getElementById("modal");
+const openModal = document.getElementById("openModal");
+const closeModal = document.getElementById("closeModal");
+const modalOk = document.getElementById("modalOk");
 
 const faqQuestions =
     document.querySelectorAll(".faq-question");
 
-faqQuestions.forEach(function (question) {
+const slideTitle =
+    document.getElementById("slideTitle");
 
-    question.addEventListener("click", function () {
-
-        const answer =
-            question.nextElementSibling;
-
-        const isExpanded =
-            question.getAttribute("aria-expanded") === "true";
-
-
-        /* Close other FAQ items */
-
-        faqQuestions.forEach(function (item) {
-
-            if (item !== question) {
-
-                item.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                item.nextElementSibling.style.maxHeight = null;
-            }
-
-        });
-
-
-        /* Toggle selected FAQ */
-
-        question.setAttribute(
-            "aria-expanded",
-            !isExpanded
-        );
-
-        if (!isExpanded) {
-
-            answer.style.maxHeight =
-                answer.scrollHeight + "px";
-
-        } else {
-
-            answer.style.maxHeight = null;
-        }
-
-    });
-
-});
-
-
-/* =========================================
-   5. Image / Content Slider
-   ========================================= */
-
-const slides =
-    document.querySelectorAll(".slide");
+const slideText =
+    document.getElementById("slideText");
 
 const prevBtn =
     document.getElementById("prevBtn");
@@ -173,61 +31,140 @@ const prevBtn =
 const nextBtn =
     document.getElementById("nextBtn");
 
-const dotsContainer =
-    document.getElementById("dots");
-
-let currentSlide = 0;
-
-
-/* Create slider dots */
-
-slides.forEach(function (_, index) {
-
-    const dot = document.createElement("button");
-
-    dot.classList.add("dot");
-
-    dot.setAttribute(
-        "aria-label",
-        "Go to slide " + (index + 1)
-    );
-
-    dot.addEventListener("click", function () {
-
-        currentSlide = index;
-        showSlide(currentSlide);
-
-    });
-
-    dotsContainer.appendChild(dot);
-});
-
-
 const dots =
     document.querySelectorAll(".dot");
 
 
+// ===============================
+// HAMBURGER MENU
+// ===============================
+
+menuBtn.addEventListener("click", function () {
+
+    navMenu.classList.toggle("show");
+
+    console.log("Hamburger menu clicked");
+
+});
+
+
+// ===============================
+// NOTIFICATION BANNER
+// ===============================
+
+closeNotification.addEventListener("click", function () {
+
+    notification.style.display = "none";
+
+    console.log("Notification closed");
+
+});
+
+
+// ===============================
+// MODAL POPUP
+// ===============================
+
+openModal.addEventListener("click", function () {
+
+    modal.classList.add("show");
+
+    console.log("Modal opened");
+
+});
+
+
+closeModal.addEventListener("click", function () {
+
+    modal.classList.remove("show");
+
+});
+
+
+modalOk.addEventListener("click", function () {
+
+    modal.classList.remove("show");
+
+});
+
+
+// Close modal when clicking outside
+modal.addEventListener("click", function (event) {
+
+    if (event.target === modal) {
+        modal.classList.remove("show");
+    }
+
+});
+
+
+// ===============================
+// FAQ COLLAPSIBLE
+// ===============================
+
+faqQuestions.forEach(function (question) {
+
+    question.addEventListener("click", function () {
+
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector("span");
+
+        answer.classList.toggle("show");
+
+        if (answer.classList.contains("show")) {
+            icon.textContent = "−";
+        } else {
+            icon.textContent = "+";
+        }
+
+        console.log("FAQ clicked");
+
+    });
+
+});
+
+
+// ===============================
+// IMAGE / CONTENT SLIDER
+// ===============================
+
+const slides = [
+
+    {
+        title: "Coding Workshop",
+        text: "Learn programming and web development skills."
+    },
+
+    {
+        title: "AI & ML Seminar",
+        text: "Explore Artificial Intelligence and Machine Learning."
+    },
+
+    {
+        title: "Annual Sports Event",
+        text: "Participate in exciting sports and team activities."
+    }
+
+];
+
+let currentSlide = 0;
+
+
 function showSlide(index) {
 
-    slides.forEach(function (slide) {
-
-        slide.classList.remove("active");
-
-    });
+    slideTitle.textContent = slides[index].title;
+    slideText.textContent = slides[index].text;
 
     dots.forEach(function (dot) {
-
         dot.classList.remove("active");
-
     });
 
-
-    slides[index].classList.add("active");
     dots[index].classList.add("active");
+
+    console.log("Current slide:", index + 1);
+
 }
 
-
-/* Next slide */
 
 nextBtn.addEventListener("click", function () {
 
@@ -238,10 +175,9 @@ nextBtn.addEventListener("click", function () {
     }
 
     showSlide(currentSlide);
+
 });
 
-
-/* Previous slide */
 
 prevBtn.addEventListener("click", function () {
 
@@ -252,103 +188,65 @@ prevBtn.addEventListener("click", function () {
     }
 
     showSlide(currentSlide);
+
 });
 
 
-/* Initial slide */
+// ===============================
+// DARK / LIGHT THEME
+// ===============================
 
-showSlide(currentSlide);
+function updateThemeButton() {
 
+    if (document.body.classList.contains("dark")) {
 
-/* =========================================
-   6. Modal Popup
-   ========================================= */
+        themeBtn.textContent = "☀️ Light Mode";
 
-const modal =
-    document.getElementById("modal");
+    } else {
 
-const openModal =
-    document.getElementById("openModal");
+        themeBtn.textContent = "🌙 Dark Mode";
 
-const closeModal =
-    document.getElementById("closeModal");
+    }
 
-const modalDone =
-    document.getElementById("modalDone");
-
-
-function showModal() {
-
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-
-    modalDone.focus();
 }
 
 
-function hideModal() {
+themeBtn.addEventListener("click", function () {
 
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
+    document.body.classList.toggle("dark");
+
+    const currentTheme =
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+    localStorage.setItem("theme", currentTheme);
+
+    updateThemeButton();
+
+    console.log("Theme saved:", currentTheme);
+
+});
+
+
+// ===============================
+// RESTORE THEME FROM LOCALSTORAGE
+// ===============================
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
 }
 
-
-/* Open modal */
-
-openModal.addEventListener("click", showModal);
+updateThemeButton();
 
 
-/* Close modal */
+// ===============================
+// PAGE LOAD MESSAGE
+// ===============================
 
-closeModal.addEventListener("click", hideModal);
-
-modalDone.addEventListener("click", hideModal);
-
-
-/* Close modal when clicking outside */
-
-modal.addEventListener("click", function (event) {
-
-    if (event.target === modal) {
-        hideModal();
-    }
-
-});
-
-
-/* Close modal using Escape */
-
-document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape" &&
-        modal.classList.contains("show")) {
-
-        hideModal();
-    }
-
-});
-
-
-/* =========================================
-   7. Contact Button
-   ========================================= */
-
-const contactBtn =
-    document.getElementById("contactBtn");
-
-contactBtn.addEventListener("click", function () {
-
-    alert(
-        "Thank you for your interest in StudentHub!"
-    );
-
-});
-
-
-/* =========================================
-   Console Testing
-   ========================================= */
-
-console.log(
-    "StudentHub Practical 4 JavaScript loaded successfully."
-);
+console.log("StudentHub Practical 4 loaded successfully.");
+console.log("DOM manipulation and event handling are working.");
