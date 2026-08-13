@@ -1,138 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Registration Form</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>Student Registration Form</h1>
-    <p class="subtitle">Please fill in the details carefully</p>
+        <h1>Student Registration Form</h1>
+        <p class="subtitle">Please enter your details carefully</p>
 
-    <form id="registrationForm" novalidate>
+        <form id="registrationForm" novalidate>
 
-        <!-- Name -->
-        <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name"
-                   placeholder="Enter your full name">
-            <small class="error" id="nameError"></small>
-        </div>
+            <!-- Full Name -->
+            <div class="form-group">
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email"
-                   placeholder="example@gmail.com">
-            <small class="error" id="emailError"></small>
-        </div>
+                <label for="name">Full Name *</label>
 
-        <!-- Mobile -->
-        <div class="form-group">
-            <label for="mobile">Mobile Number *</label>
-            <input type="tel" id="mobile" name="mobile"
-                   placeholder="10 digit mobile number"
-                   maxlength="10">
-            <small class="error" id="mobileError"></small>
-        </div>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                >
 
-        <!-- Password -->
-        <div class="form-group">
-            <label for="password">Password *</label>
-            <input type="password" id="password" name="password"
-                   placeholder="Enter password">
+                <small id="nameError" class="error"></small>
 
-            <div class="strength-container">
-                <div id="strengthBar"></div>
             </div>
 
-            <small id="strengthText"></small>
-            <small class="error" id="passwordError"></small>
-        </div>
 
-        <!-- Confirm Password -->
-        <div class="form-group">
-            <label for="confirmPassword">Confirm Password *</label>
-            <input type="password" id="confirmPassword"
-                   name="confirmPassword"
-                   placeholder="Re-enter password">
-            <small class="error" id="confirmPasswordError"></small>
-        </div>
+            <!-- Email -->
+            <div class="form-group">
 
-        <!-- Course -->
-        <div class="form-group">
-            <label for="course">Course *</label>
-            <select id="course" name="course">
-                <option value="">-- Select Course --</option>
-                <option value="AIML">B.Tech AIML</option>
-                <option value="CSE">B.Tech CSE</option>
-                <option value="IT">B.Tech IT</option>
-                <option value="CE">B.Tech CE</option>
-            </select>
-            <small class="error" id="courseError"></small>
-        </div>
+                <label for="email">Email Address *</label>
 
-        <!-- Year -->
-        <div class="form-group">
-            <label for="year">Year *</label>
-            <select id="year" name="year">
-                <option value="">-- Select Year --</option>
-                <option value="1">First Year</option>
-                <option value="2">Second Year</option>
-                <option value="3">Third Year</option>
-                <option value="4">Fourth Year</option>
-            </select>
-            <small class="error" id="yearError"></small>
-        </div>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="example@gmail.com"
+                >
 
-        <!-- Gender -->
-        <div class="form-group">
-            <label>Gender *</label>
+                <small id="emailError" class="error"></small>
 
-            <div class="radio-group">
-                <label>
-                    <input type="radio" name="gender" value="Male">
-                    Male
-                </label>
-
-                <label>
-                    <input type="radio" name="gender" value="Female">
-                    Female
-                </label>
-
-                <label>
-                    <input type="radio" name="gender" value="Other">
-                    Other
-                </label>
             </div>
 
-            <small class="error" id="genderError"></small>
-        </div>
 
-        <!-- Terms -->
-        <div class="terms">
-            <label>
-                <input type="checkbox" id="terms">
-                I accept the Terms and Conditions *
-            </label>
+            <!-- Mobile -->
+            <div class="form-group">
 
-            <small class="error" id="termsError"></small>
-        </div>
+                <label for="mobile">Mobile Number *</label>
 
-        <button type="submit">Register</button>
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Enter 10 digit mobile number"
+                    maxlength="10"
+                >
 
-        <p id="successMessage"></p>
+                <small id="mobileError" class="error"></small>
 
-    </form>
+            </div>
 
-</div>
 
-<script src="script.js"></script>
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">Password *</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                >
+
+                <!-- Password Strength -->
+                <div class="strength-container">
+                    <div id="strengthBar"></div>
+                </div>
+
+                <small id="strengthText"></small>
+
+                <small id="passwordError" class="error"></small>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password *
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter password"
+                >
+
+                <small
+                    id="confirmPasswordError"
+                    class="error">
+                </small>
+
+            </div>
+
+
+            <!-- Course -->
+            <div class="form-group">
+
+                <label for="course">Course *</label>
+
+                <select id="course">
+
+                    <option value="">
+                        -- Select Course --
+                    </option>
+
+                    <option value="AIML">
+                        B.Tech AIML
+                    </option>
+
+                    <option value="CSE">
+                        B.Tech CSE
+                    </option>
+
+                    <option value="IT">
+                        B.Tech IT
+                    </option>
+
+                    <option value="CE">
+                        B.Tech CE
+                    </option>
+
+                </select>
+
+                <small id="courseError" class="error"></small>
+
+            </div>
+
+
+            <!-- Year -->
+            <div class="form-group">
+
+                <label for="year">Year *</label>
+
+                <select id="year">
+
+                    <option value="">
+                        -- Select Year --
+                    </option>
+
+                    <option value="1">
+                        First Year
+                    </option>
+
+                    <option value="2">
+                        Second Year
+                    </option>
+
+                    <option value="3">
+                        Third Year
+                    </option>
+
+                    <option value="4">
+                        Fourth Year
+                    </option>
+
+                </select>
+
+                <small id="yearError" class="error"></small>
+
+            </div>
+
+
+            <!-- Gender -->
+            <div class="form-group">
+
+                <label>Gender *</label>
+
+                <div class="radio-group">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male">
+                        Male
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female">
+                        Female
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other">
+                        Other
+                    </label>
+
+                </div>
+
+                <small id="genderError" class="error"></small>
+
+            </div>
+
+
+            <!-- Terms -->
+            <div class="terms">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                    >
+
+                    I accept the Terms and Conditions *
+
+                </label>
+
+                <small id="termsError" class="error"></small>
+
+            </div>
+
+
+            <!-- Submit -->
+            <button type="submit">
+                Register
+            </button>
+
+
+            <!-- Success -->
+            <p id="successMessage"></p>
+
+        </form>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
