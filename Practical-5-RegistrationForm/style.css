@@ -5,9 +5,8 @@
     font-family: Arial, sans-serif;
 }
 
-
 body {
-    background: #eef2f7;
+    background: linear-gradient(135deg, #667eea, #764ba2);
 
     min-height: 100vh;
 
@@ -19,8 +18,6 @@ body {
 
     padding: 30px;
 }
-
-
 .container {
     background: white;
 
