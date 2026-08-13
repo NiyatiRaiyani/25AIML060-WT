@@ -3,146 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Practical 4</title>
+    <meta name="description" content="StudentHub - Practical 4 JavaScript DOM and UI Interactivity">
+    <title>StudentHub | Practical 4</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Notification Banner -->
-    <div id="notification" class="notification">
-        🎉 Welcome to StudentHub! New events are available.
-        <button id="closeNotification" aria-label="Close notification">×</button>
+    <!-- ================= Notification Banner ================= -->
+    <div class="notification" id="notification">
+        <span>🎉 Welcome to StudentHub! Explore our latest student events.</span>
+        <button id="closeNotification" aria-label="Close notification">&times;</button>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">StudentHub</div>
 
-        <button id="menuBtn" class="menu-btn" aria-label="Open menu">
+    <!-- ================= Header ================= -->
+    <header class="header">
+
+        <div class="logo">
+            <span class="logo-icon">🎓</span>
+            <span>Student<span>Hub</span></span>
+        </div>
+
+        <!-- Hamburger Button -->
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
             ☰
         </button>
 
-        <nav id="navMenu">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
             <a href="#home">Home</a>
             <a href="#events">Events</a>
+            <a href="#features">Features</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
+
+            <button class="theme-btn" id="themeToggle">
+                🌙 Dark Mode
+            </button>
         </nav>
 
-        <button id="themeBtn" class="theme-btn">
-            🌙 Dark Mode
-        </button>
     </header>
 
 
-    <!-- Home Section -->
-    <section id="home" class="hero">
-        <div>
-            <h1>Welcome to StudentHub</h1>
-            <p>Your simple platform for student activities and events.</p>
+    <!-- ================= Main Content ================= -->
+    <main>
 
-            <button id="openModal" class="primary-btn">
-                View Student Message
-            </button>
-        </div>
-    </section>
+        <!-- ================= Hero Section ================= -->
+        <section class="hero" id="home">
 
+            <div class="hero-content">
+                <p class="small-title">WELCOME TO STUDENTHUB</p>
 
-    <!-- Event Slider -->
-    <section id="events" class="section">
-        <h2>Upcoming Events</h2>
+                <h1>
+                    Smart Learning.
+                    <span>Better Experience.</span>
+                </h1>
 
-        <div class="slider">
+                <p>
+                    A modern student platform with interactive features
+                    powered by HTML, CSS and JavaScript.
+                </p>
 
-            <button id="prevBtn" class="slider-btn">
-                ❮
-            </button>
+                <div class="hero-buttons">
+                    <button class="primary-btn" id="exploreBtn">
+                        Explore Events
+                    </button>
 
-            <div class="slide">
-                <h3 id="slideTitle">Coding Workshop</h3>
-                <p id="slideText">
-                    Learn programming and web development skills.
+                    <button class="secondary-btn" id="learnBtn">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-card-icon">💡</div>
+                <h3>Interactive Learning</h3>
+                <p>
+                    Learn, participate and stay updated with
+                    student activities.
                 </p>
             </div>
 
-            <button id="nextBtn" class="slider-btn">
-                ❯
-            </button>
-
-        </div>
-
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </section>
+        </section>
 
 
-    <!-- FAQ Section -->
-    <section id="faq" class="section">
-        <h2>Frequently Asked Questions</h2>
+        <!-- ================= Events Slider ================= -->
+        <section class="section" id="events">
 
-        <div class="faq-item">
-            <button class="faq-question">
-                What is StudentHub?
-                <span>+</span>
-            </button>
-            <div class="faq-answer">
-                StudentHub is a platform for managing student activities,
-                events and information.
+            <div class="section-heading">
+                <p class="small-title">UPCOMING EVENTS</p>
+                <h2>Discover Student Events</h2>
+                <p>
+                    Explore exciting activities, workshops and campus events.
+                </p>
             </div>
-        </div>
 
-        <div class="faq-item">
-            <button class="faq-question">
-                How can I register for an event?
-                <span>+</span>
-            </button>
-            <div class="faq-answer">
-                You can select an event and follow the registration process.
+            <div class="slider">
+
+                <div class="slide active">
+                    <div class="slide-image image-one">
+                        <span>💻</span>
+                    </div>
+
+                    <div class="slide-content">
+                        <span class="event-tag">TECHNOLOGY</span>
+                        <h3>Web Development Workshop</h3>
+                        <p>
+                            Learn modern HTML, CSS and JavaScript
+                            through practical projects.
+                        </p>
+
+                        <div class="event-info">
+                            <span>📅 20 August 2026</span>
+                            <span>📍 Computer Lab</span>
+                        </div>
+
+                        <button class="register-btn">
+                            Register Now
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="slide">
+                    <div class="slide-image image-two">
+                        <span>🤖</span>
+                    </div>
+
+                    <div class="slide-content">
+                        <span class="event-tag">AI & ML</span>
+                        <h3>Artificial Intelligence Seminar</h3>
+                        <p>
+                            Explore the latest trends in Artificial
+                            Intelligence and Machine Learning.
+                        </p>
+
+                        <div class="event-info">
+                            <span>📅 25 August 2026</span>
+                            <span>📍 Seminar Hall</span>
+                        </div>
+
+                        <button class="register-btn">
+                            Register Now
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="slide">
+                    <div class="slide-image image-three">
+                        <span>🎨</span>
+                    </div>
+
+                    <div class="slide-content">
+                        <span class="event-tag">CREATIVE</span>
+                        <h3>Design & Innovation Fest</h3>
+                        <p>
+                            Showcase your creativity and innovative
+                            ideas with other students.
+                        </p>
+
+                        <div class="event-info">
+                            <span>📅 30 August 2026</span>
+                            <span>📍 Main Auditorium</span>
+                        </div>
+
+                        <button class="register-btn">
+                            Register Now
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Slider Controls -->
+                <button class="slider-btn prev" id="prevBtn"
+                        aria-label="Previous event">
+                    ❮
+                </button>
+
+                <button class="slider-btn next" id="nextBtn"
+                        aria-label="Next event">
+                    ❯
+                </button>
+
             </div>
-        </div>
 
-        <div class="faq-item">
-            <button class="faq-question">
-                Is StudentHub available for students?
-                <span>+</span>
-            </button>
-            <div class="faq-answer">
-                Yes, StudentHub is designed especially for students.
+            <!-- Slider Dots -->
+            <div class="dots" id="dots">
+                <button class="dot active" data-slide="0"
+                        aria-label="Show slide 1"></button>
+
+                <button class="dot" data-slide="1"
+                        aria-label="Show slide 2"></button>
+
+                <button class="dot" data-slide="2"
+                        aria-label="Show slide 3"></button>
             </div>
+
+        </section>
+
+
+        <!-- ================= Features ================= -->
+        <section class="section features-section" id="features">
+
+            <div class="section-heading">
+                <p class="small-title">FEATURES</p>
+                <h2>Powerful Interactive Components</h2>
+                <p>
+                    JavaScript improves the usability and interactivity
+                    of the StudentHub platform.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">📢</div>
+                    <h3>Notifications</h3>
+                    <p>
+                        Important updates can be displayed
+                        using dynamic notification banners.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌓</div>
+                    <h3>Theme Switcher</h3>
+                    <p>
+                        Switch between light and dark themes
+                        according to your preference.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">❓</div>
+                    <h3>FAQ Accordion</h3>
+                    <p>
+                        Frequently asked questions can be
+                        expanded and collapsed easily.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Menu</h3>
+                    <p>
+                        The hamburger menu provides easy
+                        navigation on mobile devices.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FAQ ================= -->
+        <section class="section faq-section" id="faq">
+
+            <div class="section-heading">
+                <p class="small-title">FAQ</p>
+                <h2>Frequently Asked Questions</h2>
+                <p>
+                    Click on a question to view its answer.
+                </p>
+            </div>
+
+
+            <div class="faq-container">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        What is StudentHub?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            StudentHub is a student-focused platform
+                            designed to provide information about events,
+                            learning activities and campus resources.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        What technologies are used?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            This practical uses HTML5 for structure,
+                            CSS3 for styling and JavaScript ES6+
+                            for DOM manipulation and interactivity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Is the website responsive?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. The website automatically adapts to
+                            desktop, tablet and mobile screen sizes.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Does the website remember the selected theme?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. JavaScript localStorage is used to save
+                            the user's selected light or dark theme.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= Contact ================= -->
+        <section class="contact-section" id="contact">
+
+            <div class="contact-content">
+
+                <p class="small-title">GET IN TOUCH</p>
+
+                <h2>Have Questions?</h2>
+
+                <p>
+                    Contact StudentHub to learn more about upcoming
+                    events and student activities.
+                </p>
+
+                <button class="primary-btn" id="contactBtn">
+                    Contact Us
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= Footer ================= -->
+    <footer class="footer">
+
+        <div>
+            <h3>🎓 StudentHub</h3>
+            <p>
+                Interactive Student Platform
+            </p>
         </div>
-    </section>
+
+        <div class="footer-right">
+            <p>Practical 4</p>
+            <p>JavaScript DOM & UI Interactivity</p>
+        </div>
+
+    </footer>
 
 
-    <!-- Contact -->
-    <section id="contact" class="section contact">
-        <h2>Contact Us</h2>
-        <p>Email: studenthub@example.com</p>
-        <p>Phone: +91 98765 43210</p>
-    </section>
-
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
+    <!-- ================= Modal Popup ================= -->
+    <div class="modal" id="modal" aria-hidden="true">
 
         <div class="modal-content">
 
-            <button id="closeModal" class="close-btn">
-                ×
+            <button class="modal-close" id="modalClose"
+                    aria-label="Close popup">
+                &times;
             </button>
 
-            <h2>StudentHub Message</h2>
+            <div class="modal-icon">🎉</div>
 
-            <p>
-                Welcome students! Explore upcoming events,
-                activities and useful information.
+            <h2 id="modalTitle">
+                Welcome to StudentHub!
+            </h2>
+
+            <p id="modalMessage">
+                Thank you for exploring our interactive student platform.
             </p>
 
-            <button id="modalOk" class="primary-btn">
-                OK
+            <button class="primary-btn" id="modalOk">
+                Continue
             </button>
 
         </div>
@@ -150,11 +422,7 @@
     </div>
 
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 StudentHub | Practical 4</p>
-    </footer>
-
+    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>

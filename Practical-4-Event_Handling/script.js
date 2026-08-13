@@ -1,29 +1,52 @@
-// ===============================
-// DOM ELEMENT SELECTION
-// ===============================
+/* =========================================================
+   STUDENTHUB - PRACTICAL 4
+   JavaScript DOM Manipulation & UI Interactivity
+========================================================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
 
-const themeBtn = document.getElementById("themeBtn");
+/* =========================================================
+   1. DOM ELEMENT SELECTION
+========================================================= */
 
 const notification = document.getElementById("notification");
 const closeNotification =
     document.getElementById("closeNotification");
 
-const modal = document.getElementById("modal");
-const openModal = document.getElementById("openModal");
-const closeModal = document.getElementById("closeModal");
-const modalOk = document.getElementById("modalOk");
+const menuToggle =
+    document.getElementById("menuToggle");
 
-const faqQuestions =
-    document.querySelectorAll(".faq-question");
+const navbar =
+    document.getElementById("navbar");
 
-const slideTitle =
-    document.getElementById("slideTitle");
+const themeToggle =
+    document.getElementById("themeToggle");
 
-const slideText =
-    document.getElementById("slideText");
+const exploreBtn =
+    document.getElementById("exploreBtn");
+
+const learnBtn =
+    document.getElementById("learnBtn");
+
+const contactBtn =
+    document.getElementById("contactBtn");
+
+const modal =
+    document.getElementById("modal");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+const modalOk =
+    document.getElementById("modalOk");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalMessage =
+    document.getElementById("modalMessage");
+
+const slides =
+    document.querySelectorAll(".slide");
 
 const prevBtn =
     document.getElementById("prevBtn");
@@ -34,219 +57,536 @@ const nextBtn =
 const dots =
     document.querySelectorAll(".dot");
 
+const faqQuestions =
+    document.querySelectorAll(".faq-question");
 
-// ===============================
-// HAMBURGER MENU
-// ===============================
-
-menuBtn.addEventListener("click", function () {
-
-    navMenu.classList.toggle("show");
-
-    console.log("Hamburger menu clicked");
-
-});
+const registerButtons =
+    document.querySelectorAll(".register-btn");
 
 
-// ===============================
-// NOTIFICATION BANNER
-// ===============================
+/* =========================================================
+   2. CONSOLE TESTING
+========================================================= */
+
+console.log("StudentHub JavaScript loaded successfully.");
+console.log("DOM elements selected successfully.");
+console.log("Number of FAQ items:", faqQuestions.length);
+console.log("Number of slides:", slides.length);
+
+
+/* =========================================================
+   3. NOTIFICATION BANNER
+========================================================= */
 
 closeNotification.addEventListener("click", function () {
 
     notification.style.display = "none";
 
-    console.log("Notification closed");
+    console.log("Notification banner closed.");
 
 });
 
 
-// ===============================
-// MODAL POPUP
-// ===============================
+/* =========================================================
+   4. HAMBURGER MENU
+========================================================= */
 
-openModal.addEventListener("click", function () {
+menuToggle.addEventListener("click", function () {
+
+    navbar.classList.toggle("open");
+
+    const isOpen =
+        navbar.classList.contains("open");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+    menuToggle.textContent =
+        isOpen ? "✕" : "☰";
+
+    console.log(
+        "Mobile menu:",
+        isOpen ? "Opened" : "Closed"
+    );
+
+});
+
+
+/* Close mobile menu after clicking navigation */
+
+const navLinks =
+    document.querySelectorAll(".navbar a");
+
+navLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navbar.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.textContent = "☰";
+
+    });
+
+});
+
+
+/* =========================================================
+   5. LIGHT / DARK THEME SWITCHER
+   Using localStorage
+========================================================= */
+
+
+/* Function to update button text */
+
+function updateThemeButton() {
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        themeToggle.textContent =
+            "☀️ Light Mode";
+
+    } else {
+
+        themeToggle.textContent =
+            "🌙 Dark Mode";
+
+    }
+
+}
+
+
+/* Load saved theme */
+
+const savedTheme =
+    localStorage.getItem("studentHubTheme");
+
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+}
+
+
+updateThemeButton();
+
+
+/* Theme button event */
+
+themeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+    const isDark =
+        document.body.classList.contains("dark-mode");
+
+
+    if (isDark) {
+
+        localStorage.setItem(
+            "studentHubTheme",
+            "dark"
+        );
+
+    } else {
+
+        localStorage.setItem(
+            "studentHubTheme",
+            "light"
+        );
+
+    }
+
+
+    updateThemeButton();
+
+
+    console.log(
+        "Theme changed to:",
+        isDark ? "Dark" : "Light"
+    );
+
+});
+
+
+/* =========================================================
+   6. MODAL POPUP
+========================================================= */
+
+
+/* Open modal function */
+
+function openModal(title, message) {
+
+    modalTitle.textContent = title;
+
+    modalMessage.textContent = message;
 
     modal.classList.add("show");
 
-    console.log("Modal opened");
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
 
-});
+    console.log("Modal opened:", title);
+
+}
 
 
-closeModal.addEventListener("click", function () {
+/* Close modal function */
+
+function closeModal() {
 
     modal.classList.remove("show");
 
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    console.log("Modal closed.");
+
+}
+
+
+/* Explore button */
+
+exploreBtn.addEventListener("click", function () {
+
+    document.getElementById("events")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
 });
 
 
-modalOk.addEventListener("click", function () {
+/* Learn more button */
 
-    modal.classList.remove("show");
+learnBtn.addEventListener("click", function () {
+
+    openModal(
+        "About StudentHub",
+        "StudentHub is an interactive student platform created using HTML5, CSS3 and JavaScript ES6+."
+    );
 
 });
 
 
-// Close modal when clicking outside
+/* Contact button */
+
+contactBtn.addEventListener("click", function () {
+
+    openModal(
+        "Contact StudentHub",
+        "You can contact the StudentHub team through the university student support center."
+    );
+
+});
+
+
+/* Modal close buttons */
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+modalOk.addEventListener(
+    "click",
+    closeModal
+);
+
+
+/* Close modal by clicking outside */
+
 modal.addEventListener("click", function (event) {
 
     if (event.target === modal) {
-        modal.classList.remove("show");
+
+        closeModal();
+
     }
 
 });
 
 
-// ===============================
-// FAQ COLLAPSIBLE
-// ===============================
+/* Close modal using Escape key */
+
+document.addEventListener("keydown", function (event) {
+
+    if (
+        event.key === "Escape" &&
+        modal.classList.contains("show")
+    ) {
+
+        closeModal();
+
+    }
+
+});
+
+
+/* =========================================================
+   7. EVENT REGISTRATION MODAL
+========================================================= */
+
+registerButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const eventName =
+            button
+                .closest(".slide-content")
+                .querySelector("h3")
+                .textContent;
+
+        openModal(
+            "Registration Successful!",
+            `You selected "${eventName}". Registration details will be shared with you shortly.`
+        );
+
+    });
+
+});
+
+
+/* =========================================================
+   8. IMAGE / CONTENT SLIDER
+========================================================= */
+
+let currentSlide = 0;
+
+
+/* Function to display slide */
+
+function showSlide(index) {
+
+    /* Handle first and last slide */
+
+    if (index >= slides.length) {
+
+        currentSlide = 0;
+
+    } else if (index < 0) {
+
+        currentSlide =
+            slides.length - 1;
+
+    } else {
+
+        currentSlide = index;
+
+    }
+
+
+    /* Remove active class from all slides */
+
+    slides.forEach(function (slide) {
+
+        slide.classList.remove("active");
+
+    });
+
+
+    /* Remove active class from all dots */
+
+    dots.forEach(function (dot) {
+
+        dot.classList.remove("active");
+
+    });
+
+
+    /* Show current slide */
+
+    slides[currentSlide]
+        .classList.add("active");
+
+
+    dots[currentSlide]
+        .classList.add("active");
+
+
+    console.log(
+        "Current slide:",
+        currentSlide + 1
+    );
+
+}
+
+
+/* Next slide */
+
+nextBtn.addEventListener("click", function () {
+
+    showSlide(currentSlide + 1);
+
+});
+
+
+/* Previous slide */
+
+prevBtn.addEventListener("click", function () {
+
+    showSlide(currentSlide - 1);
+
+});
+
+
+/* Dot navigation */
+
+dots.forEach(function (dot) {
+
+    dot.addEventListener("click", function () {
+
+        const slideNumber =
+            Number(
+                dot.getAttribute("data-slide")
+            );
+
+        showSlide(slideNumber);
+
+    });
+
+});
+
+
+/* Automatic slider */
+
+let autoSlide =
+    setInterval(function () {
+
+        showSlide(currentSlide + 1);
+
+    }, 5000);
+
+
+/* Pause slider when mouse enters */
+
+const slider =
+    document.querySelector(".slider");
+
+
+slider.addEventListener("mouseenter", function () {
+
+    clearInterval(autoSlide);
+
+});
+
+
+/* Resume slider when mouse leaves */
+
+slider.addEventListener("mouseleave", function () {
+
+    autoSlide =
+        setInterval(function () {
+
+            showSlide(currentSlide + 1);
+
+        }, 5000);
+
+});
+
+
+/* =========================================================
+   9. FAQ ACCORDION
+========================================================= */
 
 faqQuestions.forEach(function (question) {
 
     question.addEventListener("click", function () {
 
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector("span");
+        const faqItem =
+            question.parentElement;
 
-        answer.classList.toggle("show");
+        const answer =
+            faqItem.querySelector(".faq-answer");
 
-        if (answer.classList.contains("show")) {
-            icon.textContent = "−";
+
+        /* Close other FAQ items */
+
+        document
+            .querySelectorAll(".faq-item")
+            .forEach(function (item) {
+
+                if (item !== faqItem) {
+
+                    item.classList.remove("active");
+
+                    item.querySelector(
+                        ".faq-answer"
+                    ).style.maxHeight = null;
+
+                }
+
+            });
+
+
+        /* Toggle current FAQ */
+
+        faqItem.classList.toggle("active");
+
+
+        if (faqItem.classList.contains("active")) {
+
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
+
+            console.log("FAQ opened.");
+
         } else {
-            icon.textContent = "+";
+
+            answer.style.maxHeight = null;
+
+            console.log("FAQ closed.");
+
         }
 
-        console.log("FAQ clicked");
-
     });
 
 });
 
 
-// ===============================
-// IMAGE / CONTENT SLIDER
-// ===============================
+/* =========================================================
+   10. KEYBOARD ACCESSIBILITY
+========================================================= */
 
-const slides = [
+document.addEventListener("keydown", function (event) {
 
-    {
-        title: "Coding Workshop",
-        text: "Learn programming and web development skills."
-    },
+    /* Arrow keys for slider */
 
-    {
-        title: "AI & ML Seminar",
-        text: "Explore Artificial Intelligence and Machine Learning."
-    },
+    if (event.key === "ArrowRight") {
 
-    {
-        title: "Annual Sports Event",
-        text: "Participate in exciting sports and team activities."
+        showSlide(currentSlide + 1);
+
     }
 
-];
 
-let currentSlide = 0;
+    if (event.key === "ArrowLeft") {
 
+        showSlide(currentSlide - 1);
 
-function showSlide(index) {
-
-    slideTitle.textContent = slides[index].title;
-    slideText.textContent = slides[index].text;
-
-    dots.forEach(function (dot) {
-        dot.classList.remove("active");
-    });
-
-    dots[index].classList.add("active");
-
-    console.log("Current slide:", index + 1);
-
-}
-
-
-nextBtn.addEventListener("click", function () {
-
-    currentSlide++;
-
-    if (currentSlide >= slides.length) {
-        currentSlide = 0;
     }
-
-    showSlide(currentSlide);
 
 });
 
 
-prevBtn.addEventListener("click", function () {
+/* =========================================================
+   11. FINAL INITIALIZATION
+========================================================= */
 
-    currentSlide--;
+showSlide(0);
 
-    if (currentSlide < 0) {
-        currentSlide = slides.length - 1;
-    }
-
-    showSlide(currentSlide);
-
-});
-
-
-// ===============================
-// DARK / LIGHT THEME
-// ===============================
-
-function updateThemeButton() {
-
-    if (document.body.classList.contains("dark")) {
-
-        themeBtn.textContent = "☀️ Light Mode";
-
-    } else {
-
-        themeBtn.textContent = "🌙 Dark Mode";
-
-    }
-
-}
-
-
-themeBtn.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark");
-
-    const currentTheme =
-        document.body.classList.contains("dark")
-            ? "dark"
-            : "light";
-
-    localStorage.setItem("theme", currentTheme);
-
-    updateThemeButton();
-
-    console.log("Theme saved:", currentTheme);
-
-});
-
-
-// ===============================
-// RESTORE THEME FROM LOCALSTORAGE
-// ===============================
-
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-}
-
-updateThemeButton();
-
-
-// ===============================
-// PAGE LOAD MESSAGE
-// ===============================
-
-console.log("StudentHub Practical 4 loaded successfully.");
-console.log("DOM manipulation and event handling are working.");
+console.log(
+    "All interactive components initialized successfully."
+);
