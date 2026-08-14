@@ -1,260 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StudentHub - Practical 4 JavaScript DOM and UI Interactivity">
-    <title>StudentHub | Practical 4</title>
+
+    <meta name="description"
+        content="AIML Club Interactive Student Portal - Practical 4">
+
+    <title>AIML Club | Practical 4</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================= Notification Banner ================= -->
+    <!-- ================= NOTIFICATION BANNER ================= -->
+
     <div class="notification" id="notification">
-        <span>🎉 Welcome to StudentHub! Explore our latest student events.</span>
-        <button id="closeNotification" aria-label="Close notification">&times;</button>
+        <span>Welcome to AIML Club • CHARUSAT University</span>
+
+        <button id="closeNotification"
+            aria-label="Close notification">
+            ×
+        </button>
     </div>
 
 
-    <!-- ================= Header ================= -->
+    <!-- ================= HEADER ================= -->
+
     <header class="header">
 
-        <div class="logo">
-            <span class="logo-icon">🎓</span>
-            <span>Student<span>Hub</span></span>
+        <div class="brand">
+
+            <div class="brand-icon">
+                AI
+            </div>
+
+            <div class="brand-text">
+                <h2>AIML<span>Club</span></h2>
+                <p>CHARUSAT University</p>
+            </div>
+
         </div>
 
-        <!-- Hamburger Button -->
-        <button class="menu-toggle" id="menuToggle"
-                aria-label="Open navigation menu"
-                aria-expanded="false">
+
+        <!-- Hamburger Menu -->
+
+        <button class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
             ☰
         </button>
 
+
         <!-- Navigation -->
+
         <nav class="navbar" id="navbar">
+
             <a href="#home">Home</a>
+
             <a href="#events">Events</a>
-            <a href="#features">Features</a>
+
             <a href="#faq">FAQ</a>
+
             <a href="#contact">Contact</a>
 
-            <button class="theme-btn" id="themeToggle">
-                🌙 Dark Mode
+            <button class="theme-btn"
+                id="themeToggle">
+                🌙 Dark
             </button>
+
         </nav>
 
     </header>
 
 
-    <!-- ================= Main Content ================= -->
     <main>
 
-        <!-- ================= Hero Section ================= -->
+        <!-- ================= HERO SECTION ================= -->
+
         <section class="hero" id="home">
 
-            <div class="hero-content">
-                <p class="small-title">WELCOME TO STUDENTHUB</p>
+            <div class="hero-left">
+
+                <div class="eyebrow">
+                    B.TECH AIML • STUDENT CLUB
+                </div>
 
                 <h1>
-                    Smart Learning.
-                    <span>Better Experience.</span>
+                    Learn.
+                    Build.
+                    <span>Innovate.</span>
                 </h1>
 
-                <p>
-                    A modern student platform with interactive features
-                    powered by HTML, CSS and JavaScript.
+                <p class="hero-description">
+
+                    A modern interactive student portal for the
+                    <strong>AIML Department</strong> and
+                    <strong>MathFlow Club</strong>, demonstrating
+                    JavaScript DOM manipulation and UI interactivity.
+
                 </p>
 
-                <div class="hero-buttons">
-                    <button class="primary-btn" id="exploreBtn">
-                        Explore Events
+
+                <div class="hero-actions">
+
+                    <button class="primary-btn"
+                        id="openModal">
+
+                        View Student Profile
+
                     </button>
 
-                    <button class="secondary-btn" id="learnBtn">
-                        Learn More
-                    </button>
+
+                    <a href="#events"
+                        class="secondary-btn">
+
+                        Explore Events
+
+                    </a>
+
                 </div>
+
             </div>
 
+
+            <!-- Right AI Card -->
+
             <div class="hero-card">
-                <div class="hero-card-icon">💡</div>
-                <h3>Interactive Learning</h3>
+
+                <div class="robot-icon">
+                    🤖
+                </div>
+
+                <h2>
+                    AI + ML
+                </h2>
+
                 <p>
-                    Learn, participate and stay updated with
-                    student activities.
+                    Code your ideas into reality.
                 </p>
+
+                <div class="card-line"></div>
+
+                <div class="card-details">
+
+                    <span>
+                        AIML Department
+                    </span>
+
+                    <span>
+                        MathFlow Club
+                    </span>
+
+                </div>
+
             </div>
 
         </section>
 
 
-        <!-- ================= Events Slider ================= -->
+        <!-- ================= STUDENT INFORMATION ================= -->
+
+        <section class="student-section">
+
+            <div class="section-label">
+                STUDENT INFORMATION
+            </div>
+
+            <h2>
+                Practical 4
+            </h2>
+
+            <p class="section-description">
+
+                JavaScript DOM Manipulation,
+                Event Handling and UI Interactivity
+
+            </p>
+
+
+            <div class="student-grid">
+
+                <div class="info-box">
+
+                    <span>Name</span>
+
+                    <strong>
+                        Niyati Raiyani
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <span>Student ID</span>
+
+                    <strong>
+                        25AIML060
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <span>Department</span>
+
+                    <strong>
+                        AIML Department
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <span>Club</span>
+
+                    <strong>
+                        MathFlow Club
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EVENTS SECTION ================= -->
+
         <section class="section" id="events">
 
             <div class="section-heading">
-                <p class="small-title">UPCOMING EVENTS</p>
-                <h2>Discover Student Events</h2>
+
+                <div class="section-label">
+                    CLUB ACTIVITIES
+                </div>
+
+                <h2>
+                    Featured Events
+                </h2>
+
                 <p>
-                    Explore exciting activities, workshops and campus events.
+                    Discover technical sessions and
+                    interactive activities.
                 </p>
-            </div>
-
-            <div class="slider">
-
-                <div class="slide active">
-                    <div class="slide-image image-one">
-                        <span>💻</span>
-                    </div>
-
-                    <div class="slide-content">
-                        <span class="event-tag">TECHNOLOGY</span>
-                        <h3>Web Development Workshop</h3>
-                        <p>
-                            Learn modern HTML, CSS and JavaScript
-                            through practical projects.
-                        </p>
-
-                        <div class="event-info">
-                            <span>📅 20 August 2026</span>
-                            <span>📍 Computer Lab</span>
-                        </div>
-
-                        <button class="register-btn">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="slide">
-                    <div class="slide-image image-two">
-                        <span>🤖</span>
-                    </div>
-
-                    <div class="slide-content">
-                        <span class="event-tag">AI & ML</span>
-                        <h3>Artificial Intelligence Seminar</h3>
-                        <p>
-                            Explore the latest trends in Artificial
-                            Intelligence and Machine Learning.
-                        </p>
-
-                        <div class="event-info">
-                            <span>📅 25 August 2026</span>
-                            <span>📍 Seminar Hall</span>
-                        </div>
-
-                        <button class="register-btn">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-
-
-                <div class="slide">
-                    <div class="slide-image image-three">
-                        <span>🎨</span>
-                    </div>
-
-                    <div class="slide-content">
-                        <span class="event-tag">CREATIVE</span>
-                        <h3>Design & Innovation Fest</h3>
-                        <p>
-                            Showcase your creativity and innovative
-                            ideas with other students.
-                        </p>
-
-                        <div class="event-info">
-                            <span>📅 30 August 2026</span>
-                            <span>📍 Main Auditorium</span>
-                        </div>
-
-                        <button class="register-btn">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-
-
-                <!-- Slider Controls -->
-                <button class="slider-btn prev" id="prevBtn"
-                        aria-label="Previous event">
-                    ❮
-                </button>
-
-                <button class="slider-btn next" id="nextBtn"
-                        aria-label="Next event">
-                    ❯
-                </button>
 
             </div>
+
+
+            <div class="slider-wrapper">
+
+                <!-- Previous Button -->
+
+                <button class="slider-button"
+                    id="prevSlide"
+                    aria-label="Previous event">
+
+                    ←
+
+                </button>
+
+
+                <div class="slides-container">
+
+
+                    <!-- ===== EVENT 1 ===== -->
+
+                    <div class="slide active">
+
+                        <div class="event-icon">
+                            🤖
+                        </div>
+
+
+                        <div class="event-content">
+
+                            <span class="event-tag">
+                                WORKSHOP
+                            </span>
+
+
+                            <div class="event-date">
+                                📅 20 August 2026
+                            </div>
+
+
+                            <h3>
+                                AI & Machine Learning Workshop
+                            </h3>
+
+
+                            <p>
+
+                                Explore practical concepts of
+                                Artificial Intelligence and
+                                Machine Learning.
+
+                            </p>
+
+
+                            <div class="event-meta">
+
+                                <span>
+                                    🕐 10:00 AM
+                                </span>
+
+                                <span>
+                                    📍 AIML Department
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ===== EVENT 2 ===== -->
+
+                    <div class="slide">
+
+                        <div class="event-icon">
+                            💡
+                        </div>
+
+
+                        <div class="event-content">
+
+                            <span class="event-tag">
+                                SEMINAR
+                            </span>
+
+
+                            <div class="event-date">
+                                📅 27 August 2026
+                            </div>
+
+
+                            <h3>
+                                Innovation & Technology Seminar
+                            </h3>
+
+
+                            <p>
+
+                                Learn about emerging technologies
+                                and their real-world applications.
+
+                            </p>
+
+
+                            <div class="event-meta">
+
+                                <span>
+                                    🕐 02:00 PM
+                                </span>
+
+                                <span>
+                                    📍 CHARUSAT University
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ===== EVENT 3 ===== -->
+
+                    <div class="slide">
+
+                        <div class="event-icon">
+                            🧠
+                        </div>
+
+
+                        <div class="event-content">
+
+                            <span class="event-tag">
+                                CLUB ACTIVITY
+                            </span>
+
+
+                            <div class="event-date">
+                                📅 03 September 2026
+                            </div>
+
+
+                            <h3>
+                                MathFlow Problem Solving Session
+                            </h3>
+
+
+                            <p>
+
+                                Develop logical reasoning,
+                                mathematical thinking and
+                                analytical skills.
+
+                            </p>
+
+
+                            <div class="event-meta">
+
+                                <span>
+                                    🕐 11:00 AM
+                                </span>
+
+                                <span>
+                                    📍 MathFlow Club
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Next Button -->
+
+                <button class="slider-button"
+                    id="nextSlide"
+                    aria-label="Next event">
+
+                    →
+
+                </button>
+
+            </div>
+
 
             <!-- Slider Dots -->
-            <div class="dots" id="dots">
-                <button class="dot active" data-slide="0"
-                        aria-label="Show slide 1"></button>
 
-                <button class="dot" data-slide="1"
-                        aria-label="Show slide 2"></button>
+            <div class="dots">
 
-                <button class="dot" data-slide="2"
-                        aria-label="Show slide 3"></button>
+                <button class="dot active"
+                    aria-label="Show event 1">
+                </button>
+
+                <button class="dot"
+                    aria-label="Show event 2">
+                </button>
+
+                <button class="dot"
+                    aria-label="Show event 3">
+                </button>
+
             </div>
 
         </section>
 
 
-        <!-- ================= Features ================= -->
-        <section class="section features-section" id="features">
+        <!-- ================= FEATURES ================= -->
+
+        <section class="section features-section">
 
             <div class="section-heading">
-                <p class="small-title">FEATURES</p>
-                <h2>Powerful Interactive Components</h2>
-                <p>
-                    JavaScript improves the usability and interactivity
-                    of the StudentHub platform.
-                </p>
+
+                <div class="section-label">
+                    PRACTICAL 4
+                </div>
+
+                <h2>
+                    Interactive Features
+                </h2>
+
             </div>
+
 
             <div class="feature-grid">
 
-                <div class="feature-card">
-                    <div class="feature-icon">📢</div>
-                    <h3>Notifications</h3>
-                    <p>
-                        Important updates can be displayed
-                        using dynamic notification banners.
-                    </p>
-                </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🌓</div>
-                    <h3>Theme Switcher</h3>
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <h3>
+                        DOM Manipulation
+                    </h3>
+
                     <p>
-                        Switch between light and dark themes
-                        according to your preference.
+                        Select and dynamically modify
+                        webpage elements using JavaScript.
                     </p>
+
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">❓</div>
-                    <h3>FAQ Accordion</h3>
-                    <p>
-                        Frequently asked questions can be
-                        expanded and collapsed easily.
-                    </p>
-                </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Responsive Menu</h3>
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Event Handling
+                    </h3>
+
                     <p>
-                        The hamburger menu provides easy
-                        navigation on mobile devices.
+                        Handle clicks, navigation,
+                        keyboard and user interactions.
                     </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Local Storage
+                    </h3>
+
+                    <p>
+                        Remember the user's selected
+                        light or dark theme preference.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Responsive UI
+                    </h3>
+
+                    <p>
+                        Provide a clean and usable
+                        experience across screen sizes.
+                    </p>
+
                 </div>
 
             </div>
@@ -263,84 +558,147 @@
 
 
         <!-- ================= FAQ ================= -->
-        <section class="section faq-section" id="faq">
+
+        <section class="section faq-section"
+            id="faq">
 
             <div class="section-heading">
-                <p class="small-title">FAQ</p>
-                <h2>Frequently Asked Questions</h2>
+
+                <div class="section-label">
+                    FAQ
+                </div>
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
                 <p>
-                    Click on a question to view its answer.
+                    Click a question to view the answer.
                 </p>
+
             </div>
 
 
             <div class="faq-container">
 
+
+                <!-- FAQ 1 -->
+
                 <div class="faq-item">
 
                     <button class="faq-question">
-                        What is StudentHub?
-                        <span>+</span>
+
+                        <span>
+                            What is the AIML Club?
+                        </span>
+
+                        <b>+</b>
+
                     </button>
 
+
                     <div class="faq-answer">
+
                         <p>
-                            StudentHub is a student-focused platform
-                            designed to provide information about events,
-                            learning activities and campus resources.
+
+                            AIML Club is a student platform
+                            focused on Artificial Intelligence,
+                            Machine Learning, programming and
+                            technical activities.
+
                         </p>
+
                     </div>
 
                 </div>
 
 
+                <!-- FAQ 2 -->
+
                 <div class="faq-item">
 
                     <button class="faq-question">
-                        What technologies are used?
-                        <span>+</span>
+
+                        <span>
+                            What is DOM manipulation?
+                        </span>
+
+                        <b>+</b>
+
                     </button>
 
+
                     <div class="faq-answer">
+
                         <p>
-                            This practical uses HTML5 for structure,
-                            CSS3 for styling and JavaScript ES6+
-                            for DOM manipulation and interactivity.
+
+                            DOM manipulation allows JavaScript
+                            to select, modify and dynamically
+                            update HTML elements.
+
                         </p>
+
                     </div>
 
                 </div>
 
 
+                <!-- FAQ 3 -->
+
                 <div class="faq-item">
 
                     <button class="faq-question">
-                        Is the website responsive?
-                        <span>+</span>
+
+                        <span>
+                            Why is localStorage used?
+                        </span>
+
+                        <b>+</b>
+
                     </button>
 
+
                     <div class="faq-answer">
+
                         <p>
-                            Yes. The website automatically adapts to
-                            desktop, tablet and mobile screen sizes.
+
+                            localStorage is used to save the
+                            selected theme preference and
+                            restore it when the page is reopened.
+
                         </p>
+
                     </div>
 
                 </div>
 
 
+                <!-- FAQ 4 -->
+
                 <div class="faq-item">
 
                     <button class="faq-question">
-                        Does the website remember the selected theme?
-                        <span>+</span>
+
+                        <span>
+                            How does JavaScript improve usability?
+                        </span>
+
+                        <b>+</b>
+
                     </button>
 
+
                     <div class="faq-answer">
+
                         <p>
-                            Yes. JavaScript localStorage is used to save
-                            the user's selected light or dark theme.
+
+                            JavaScript adds dynamic features
+                            such as sliders, modal windows,
+                            navigation menus and interactive FAQ
+                            sections.
+
                         </p>
+
                     </div>
 
                 </div>
@@ -350,23 +708,100 @@
         </section>
 
 
-        <!-- ================= Contact ================= -->
-        <section class="contact-section" id="contact">
+        <!-- ================= CONTACT ================= -->
 
-            <div class="contact-content">
+        <section class="contact-section"
+            id="contact">
 
-                <p class="small-title">GET IN TOUCH</p>
 
-                <h2>Have Questions?</h2>
+            <div class="contact-left">
+
+                <div class="section-label">
+                    SUBMISSION DETAILS
+                </div>
+
+                <h2>
+                    Student Profile
+                </h2>
 
                 <p>
-                    Contact StudentHub to learn more about upcoming
-                    events and student activities.
+
+                    This practical demonstrates client-side
+                    interactivity using HTML5, CSS3 and
+                    JavaScript ES6+.
+
                 </p>
 
-                <button class="primary-btn" id="contactBtn">
-                    Contact Us
-                </button>
+            </div>
+
+
+            <div class="contact-card">
+
+
+                <div>
+
+                    <span>Name</span>
+
+                    <strong>
+                        Niyati Raiyani
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Email</span>
+
+                    <strong>
+                        25aiml060@charusat.edu.in
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Student ID</span>
+
+                    <strong>
+                        25AIML060
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Department</span>
+
+                    <strong>
+                        AIML Department
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Club</span>
+
+                    <strong>
+                        MathFlow Club
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>University</span>
+
+                    <strong>
+                        CHARUSAT University
+                    </strong>
+
+                </div>
 
             </div>
 
@@ -375,46 +810,92 @@
     </main>
 
 
-    <!-- ================= Footer ================= -->
-    <footer class="footer">
+    <!-- ================= MODAL POPUP ================= -->
 
-        <div>
-            <h3>🎓 StudentHub</h3>
-            <p>
-                Interactive Student Platform
-            </p>
-        </div>
+    <div class="modal"
+        id="studentModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle">
 
-        <div class="footer-right">
-            <p>Practical 4</p>
-            <p>JavaScript DOM & UI Interactivity</p>
-        </div>
-
-    </footer>
-
-
-    <!-- ================= Modal Popup ================= -->
-    <div class="modal" id="modal" aria-hidden="true">
 
         <div class="modal-content">
 
-            <button class="modal-close" id="modalClose"
-                    aria-label="Close popup">
-                &times;
+
+            <button class="modal-close"
+                id="closeModal"
+                aria-label="Close modal">
+
+                ×
+
             </button>
 
-            <div class="modal-icon">🎉</div>
+
+            <div class="modal-avatar">
+                NR
+            </div>
+
+
+            <div class="section-label">
+                STUDENT PROFILE
+            </div>
+
 
             <h2 id="modalTitle">
-                Welcome to StudentHub!
+                Niyati Raiyani
             </h2>
 
-            <p id="modalMessage">
-                Thank you for exploring our interactive student platform.
+
+            <p class="modal-subtitle">
+
+                25AIML060 • AIML Department
+
             </p>
 
-            <button class="primary-btn" id="modalOk">
-                Continue
+
+            <div class="modal-details">
+
+
+                <p>
+
+                    <span>Email</span>
+
+                    <strong>
+                        25aiml060@charusat.edu.in
+                    </strong>
+
+                </p>
+
+
+                <p>
+
+                    <span>Club</span>
+
+                    <strong>
+                        MathFlow Club
+                    </strong>
+
+                </p>
+
+
+                <p>
+
+                    <span>University</span>
+
+                    <strong>
+                        CHARUSAT University
+                    </strong>
+
+                </p>
+
+            </div>
+
+
+            <button class="primary-btn"
+                id="modalDone">
+
+                Close Profile
+
             </button>
 
         </div>
@@ -422,8 +903,29 @@
     </div>
 
 
-    <!-- JavaScript -->
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+            AIML<span>Club</span>
+        </div>
+
+        <p>
+
+            © 2026 Niyati Raiyani •
+            25AIML060 •
+            AIML Department •
+            MathFlow Club •
+            CHARUSAT University
+
+        </p>
+
+    </footer>
+
+
     <script src="script.js"></script>
 
 </body>
+
 </html>

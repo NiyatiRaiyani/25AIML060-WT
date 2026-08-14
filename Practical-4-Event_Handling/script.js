@@ -1,592 +1,385 @@
-/* =========================================================
-   STUDENTHUB - PRACTICAL 4
-   JavaScript DOM Manipulation & UI Interactivity
-========================================================= */
+/* ==========================================
+   PRACTICAL 4
+   JavaScript DOM Manipulation,
+   Event Handling & UI Interactivity
+
+   Student       : Niyati Raiyani
+   Student ID    : 25AIML060
+   Department    : AIML Department
+   Club          : MathFlow Club
+   University    : CHARUSAT University
+========================================== */
 
 
-/* =========================================================
-   1. DOM ELEMENT SELECTION
-========================================================= */
-
-const notification = document.getElementById("notification");
-const closeNotification =
-    document.getElementById("closeNotification");
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const navbar =
-    document.getElementById("navbar");
-
-const themeToggle =
-    document.getElementById("themeToggle");
-
-const exploreBtn =
-    document.getElementById("exploreBtn");
-
-const learnBtn =
-    document.getElementById("learnBtn");
-
-const contactBtn =
-    document.getElementById("contactBtn");
-
-const modal =
-    document.getElementById("modal");
-
-const modalClose =
-    document.getElementById("modalClose");
-
-const modalOk =
-    document.getElementById("modalOk");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalMessage =
-    document.getElementById("modalMessage");
-
-const slides =
-    document.querySelectorAll(".slide");
-
-const prevBtn =
-    document.getElementById("prevBtn");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const dots =
-    document.querySelectorAll(".dot");
-
-const faqQuestions =
-    document.querySelectorAll(".faq-question");
-
-const registerButtons =
-    document.querySelectorAll(".register-btn");
+document.addEventListener("DOMContentLoaded", () => {
 
 
-/* =========================================================
-   2. CONSOLE TESTING
-========================================================= */
+    /* ===============================
+       DOM ELEMENT SELECTION
+    =============================== */
 
-console.log("StudentHub JavaScript loaded successfully.");
-console.log("DOM elements selected successfully.");
-console.log("Number of FAQ items:", faqQuestions.length);
-console.log("Number of slides:", slides.length);
+    const notification =
+        document.getElementById("notification");
 
+    const closeNotification =
+        document.getElementById("closeNotification");
 
-/* =========================================================
-   3. NOTIFICATION BANNER
-========================================================= */
+    const hamburger =
+        document.getElementById("hamburger");
 
-closeNotification.addEventListener("click", function () {
+    const navbar =
+        document.getElementById("navbar");
 
-    notification.style.display = "none";
+    const themeToggle =
+        document.getElementById("themeToggle");
 
-    console.log("Notification banner closed.");
+    const openModal =
+        document.getElementById("openModal");
 
-});
+    const modal =
+        document.getElementById("studentModal");
 
+    const closeModal =
+        document.getElementById("closeModal");
 
-/* =========================================================
-   4. HAMBURGER MENU
-========================================================= */
+    const modalDone =
+        document.getElementById("modalDone");
 
-menuToggle.addEventListener("click", function () {
+    const faqQuestions =
+        document.querySelectorAll(".faq-question");
 
-    navbar.classList.toggle("open");
+    const slides =
+        document.querySelectorAll(".slide");
 
-    const isOpen =
-        navbar.classList.contains("open");
+    const dots =
+        document.querySelectorAll(".dot");
 
-    menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen
-    );
+    const prevSlide =
+        document.getElementById("prevSlide");
 
-    menuToggle.textContent =
-        isOpen ? "✕" : "☰";
-
-    console.log(
-        "Mobile menu:",
-        isOpen ? "Opened" : "Closed"
-    );
-
-});
+    const nextSlide =
+        document.getElementById("nextSlide");
 
 
-/* Close mobile menu after clicking navigation */
+    /* ===============================
+       NOTIFICATION BANNER
+    =============================== */
 
-const navLinks =
-    document.querySelectorAll(".navbar a");
+    closeNotification.addEventListener("click", () => {
 
-navLinks.forEach(function (link) {
+        notification.style.display = "none";
 
-    link.addEventListener("click", function () {
+    });
 
-        navbar.classList.remove("open");
 
-        menuToggle.setAttribute(
+    /* ===============================
+       HAMBURGER MENU
+    =============================== */
+
+    hamburger.addEventListener("click", () => {
+
+        const menuOpen =
+            navbar.classList.toggle("show");
+
+        hamburger.setAttribute(
             "aria-expanded",
-            "false"
-        );
-
-        menuToggle.textContent = "☰";
-
-    });
-
-});
-
-
-/* =========================================================
-   5. LIGHT / DARK THEME SWITCHER
-   Using localStorage
-========================================================= */
-
-
-/* Function to update button text */
-
-function updateThemeButton() {
-
-    if (document.body.classList.contains("dark-mode")) {
-
-        themeToggle.textContent =
-            "☀️ Light Mode";
-
-    } else {
-
-        themeToggle.textContent =
-            "🌙 Dark Mode";
-
-    }
-
-}
-
-
-/* Load saved theme */
-
-const savedTheme =
-    localStorage.getItem("studentHubTheme");
-
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark-mode");
-
-}
-
-
-updateThemeButton();
-
-
-/* Theme button event */
-
-themeToggle.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark-mode");
-
-    const isDark =
-        document.body.classList.contains("dark-mode");
-
-
-    if (isDark) {
-
-        localStorage.setItem(
-            "studentHubTheme",
-            "dark"
-        );
-
-    } else {
-
-        localStorage.setItem(
-            "studentHubTheme",
-            "light"
-        );
-
-    }
-
-
-    updateThemeButton();
-
-
-    console.log(
-        "Theme changed to:",
-        isDark ? "Dark" : "Light"
-    );
-
-});
-
-
-/* =========================================================
-   6. MODAL POPUP
-========================================================= */
-
-
-/* Open modal function */
-
-function openModal(title, message) {
-
-    modalTitle.textContent = title;
-
-    modalMessage.textContent = message;
-
-    modal.classList.add("show");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    console.log("Modal opened:", title);
-
-}
-
-
-/* Close modal function */
-
-function closeModal() {
-
-    modal.classList.remove("show");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    console.log("Modal closed.");
-
-}
-
-
-/* Explore button */
-
-exploreBtn.addEventListener("click", function () {
-
-    document.getElementById("events")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-});
-
-
-/* Learn more button */
-
-learnBtn.addEventListener("click", function () {
-
-    openModal(
-        "About StudentHub",
-        "StudentHub is an interactive student platform created using HTML5, CSS3 and JavaScript ES6+."
-    );
-
-});
-
-
-/* Contact button */
-
-contactBtn.addEventListener("click", function () {
-
-    openModal(
-        "Contact StudentHub",
-        "You can contact the StudentHub team through the university student support center."
-    );
-
-});
-
-
-/* Modal close buttons */
-
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
-
-
-modalOk.addEventListener(
-    "click",
-    closeModal
-);
-
-
-/* Close modal by clicking outside */
-
-modal.addEventListener("click", function (event) {
-
-    if (event.target === modal) {
-
-        closeModal();
-
-    }
-
-});
-
-
-/* Close modal using Escape key */
-
-document.addEventListener("keydown", function (event) {
-
-    if (
-        event.key === "Escape" &&
-        modal.classList.contains("show")
-    ) {
-
-        closeModal();
-
-    }
-
-});
-
-
-/* =========================================================
-   7. EVENT REGISTRATION MODAL
-========================================================= */
-
-registerButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        const eventName =
-            button
-                .closest(".slide-content")
-                .querySelector("h3")
-                .textContent;
-
-        openModal(
-            "Registration Successful!",
-            `You selected "${eventName}". Registration details will be shared with you shortly.`
+            menuOpen
         );
 
     });
 
-});
 
+    document.querySelectorAll(".navbar a")
+        .forEach(link => {
 
-/* =========================================================
-   8. IMAGE / CONTENT SLIDER
-========================================================= */
+            link.addEventListener("click", () => {
 
-let currentSlide = 0;
+                navbar.classList.remove("show");
 
-
-/* Function to display slide */
-
-function showSlide(index) {
-
-    /* Handle first and last slide */
-
-    if (index >= slides.length) {
-
-        currentSlide = 0;
-
-    } else if (index < 0) {
-
-        currentSlide =
-            slides.length - 1;
-
-    } else {
-
-        currentSlide = index;
-
-    }
-
-
-    /* Remove active class from all slides */
-
-    slides.forEach(function (slide) {
-
-        slide.classList.remove("active");
-
-    });
-
-
-    /* Remove active class from all dots */
-
-    dots.forEach(function (dot) {
-
-        dot.classList.remove("active");
-
-    });
-
-
-    /* Show current slide */
-
-    slides[currentSlide]
-        .classList.add("active");
-
-
-    dots[currentSlide]
-        .classList.add("active");
-
-
-    console.log(
-        "Current slide:",
-        currentSlide + 1
-    );
-
-}
-
-
-/* Next slide */
-
-nextBtn.addEventListener("click", function () {
-
-    showSlide(currentSlide + 1);
-
-});
-
-
-/* Previous slide */
-
-prevBtn.addEventListener("click", function () {
-
-    showSlide(currentSlide - 1);
-
-});
-
-
-/* Dot navigation */
-
-dots.forEach(function (dot) {
-
-    dot.addEventListener("click", function () {
-
-        const slideNumber =
-            Number(
-                dot.getAttribute("data-slide")
-            );
-
-        showSlide(slideNumber);
-
-    });
-
-});
-
-
-/* Automatic slider */
-
-let autoSlide =
-    setInterval(function () {
-
-        showSlide(currentSlide + 1);
-
-    }, 5000);
-
-
-/* Pause slider when mouse enters */
-
-const slider =
-    document.querySelector(".slider");
-
-
-slider.addEventListener("mouseenter", function () {
-
-    clearInterval(autoSlide);
-
-});
-
-
-/* Resume slider when mouse leaves */
-
-slider.addEventListener("mouseleave", function () {
-
-    autoSlide =
-        setInterval(function () {
-
-            showSlide(currentSlide + 1);
-
-        }, 5000);
-
-});
-
-
-/* =========================================================
-   9. FAQ ACCORDION
-========================================================= */
-
-faqQuestions.forEach(function (question) {
-
-    question.addEventListener("click", function () {
-
-        const faqItem =
-            question.parentElement;
-
-        const answer =
-            faqItem.querySelector(".faq-answer");
-
-
-        /* Close other FAQ items */
-
-        document
-            .querySelectorAll(".faq-item")
-            .forEach(function (item) {
-
-                if (item !== faqItem) {
-
-                    item.classList.remove("active");
-
-                    item.querySelector(
-                        ".faq-answer"
-                    ).style.maxHeight = null;
-
-                }
+                hamburger.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
             });
 
-
-        /* Toggle current FAQ */
-
-        faqItem.classList.toggle("active");
+        });
 
 
-        if (faqItem.classList.contains("active")) {
+    /* ===============================
+       DARK / LIGHT THEME
+       USING LOCAL STORAGE
+    =============================== */
 
-            answer.style.maxHeight =
-                answer.scrollHeight + "px";
+    const savedTheme =
+        localStorage.getItem("theme");
 
-            console.log("FAQ opened.");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add(
+            "dark-theme"
+        );
+
+        themeToggle.textContent =
+            "☀️ Light";
+
+    }
+
+
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle(
+            "dark-theme"
+        );
+
+
+        const darkMode =
+            document.body.classList.contains(
+                "dark-theme"
+            );
+
+
+        if (darkMode) {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            themeToggle.textContent =
+                "☀️ Light";
 
         } else {
 
-            answer.style.maxHeight = null;
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
 
-            console.log("FAQ closed.");
+            themeToggle.textContent =
+                "🌙 Dark";
 
         }
 
     });
 
-});
+
+    /* ===============================
+       MODAL POPUP
+    =============================== */
+
+    openModal.addEventListener("click", () => {
+
+        modal.classList.add("show");
+
+        closeModal.focus();
+
+    });
 
 
-/* =========================================================
-   10. KEYBOARD ACCESSIBILITY
-========================================================= */
+    closeModal.addEventListener("click", () => {
 
-document.addEventListener("keydown", function (event) {
+        modal.classList.remove("show");
 
-    /* Arrow keys for slider */
+    });
 
-    if (event.key === "ArrowRight") {
 
-        showSlide(currentSlide + 1);
+    modalDone.addEventListener("click", () => {
+
+        modal.classList.remove("show");
+
+    });
+
+
+    modal.addEventListener("click", (event) => {
+
+        if (event.target === modal) {
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+
+    /* ESC KEY TO CLOSE MODAL */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+
+    /* ===============================
+       COLLAPSIBLE FAQ
+    =============================== */
+
+    faqQuestions.forEach(question => {
+
+        question.addEventListener("click", () => {
+
+            const faqItem =
+                question.parentElement;
+
+            const icon =
+                question.querySelector("b");
+
+
+            faqItem.classList.toggle("open");
+
+
+            if (faqItem.classList.contains("open")) {
+
+                icon.textContent = "−";
+
+            } else {
+
+                icon.textContent = "+";
+
+            }
+
+        });
+
+    });
+
+
+    /* ===============================
+       EVENT CONTENT SLIDER
+    =============================== */
+
+    let currentSlide = 0;
+
+
+    function showSlide(index) {
+
+        slides.forEach(slide => {
+
+            slide.classList.remove("active");
+
+        });
+
+
+        dots.forEach(dot => {
+
+            dot.classList.remove("active");
+
+        });
+
+
+        slides[index].classList.add("active");
+
+        dots[index].classList.add("active");
 
     }
 
 
-    if (event.key === "ArrowLeft") {
+    /* NEXT */
 
-        showSlide(currentSlide - 1);
+    nextSlide.addEventListener("click", () => {
 
-    }
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+
+            currentSlide = 0;
+
+        }
+
+        showSlide(currentSlide);
+
+    });
+
+
+    /* PREVIOUS */
+
+    prevSlide.addEventListener("click", () => {
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+
+            currentSlide =
+                slides.length - 1;
+
+        }
+
+        showSlide(currentSlide);
+
+    });
+
+
+    /* DOT NAVIGATION */
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener("click", () => {
+
+            currentSlide = index;
+
+            showSlide(currentSlide);
+
+        });
+
+    });
+
+
+    /* AUTOMATIC SLIDER */
+
+    setInterval(() => {
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+
+            currentSlide = 0;
+
+        }
+
+        showSlide(currentSlide);
+
+    }, 5000);
+
+
+    /* ===============================
+       BROWSER CONSOLE TESTING
+    =============================== */
+
+    console.log(
+        "================================"
+    );
+
+    console.log(
+        "Practical 4 Loaded Successfully"
+    );
+
+    console.log(
+        "Student: Niyati Raiyani"
+    );
+
+    console.log(
+        "Student ID: 25AIML060"
+    );
+
+    console.log(
+        "Department: AIML Department"
+    );
+
+    console.log(
+        "Club: MathFlow Club"
+    );
+
+    console.log(
+        "University: CHARUSAT University"
+    );
+
+    console.log(
+        "================================"
+    );
 
 });
-
-
-/* =========================================================
-   11. FINAL INITIALIZATION
-========================================================= */
-
-showSlide(0);
-
-console.log(
-    "All interactive components initialized successfully."
-);
