@@ -15,19 +15,26 @@
     <div class="container">
 
         <h1>Student Registration Form</h1>
-        <p class="subtitle">Please enter your details carefully</p>
+
+        <p class="subtitle">
+            Please enter your details carefully
+        </p>
 
         <form id="registrationForm" novalidate>
 
             <!-- Full Name -->
             <div class="form-group">
 
-                <label for="name">Full Name *</label>
+                <label for="name">
+                    Full Name <span>*</span>
+                </label>
 
                 <input
                     type="text"
                     id="name"
                     placeholder="Enter your full name"
+                    autocomplete="name"
+                    aria-describedby="nameError"
                 >
 
                 <small id="nameError" class="error"></small>
@@ -38,12 +45,16 @@
             <!-- Email -->
             <div class="form-group">
 
-                <label for="email">Email Address *</label>
+                <label for="email">
+                    Email Address <span>*</span>
+                </label>
 
                 <input
                     type="email"
                     id="email"
                     placeholder="example@gmail.com"
+                    autocomplete="email"
+                    aria-describedby="emailError"
                 >
 
                 <small id="emailError" class="error"></small>
@@ -54,13 +65,18 @@
             <!-- Mobile -->
             <div class="form-group">
 
-                <label for="mobile">Mobile Number *</label>
+                <label for="mobile">
+                    Mobile Number <span>*</span>
+                </label>
 
                 <input
                     type="tel"
                     id="mobile"
                     placeholder="Enter 10 digit mobile number"
                     maxlength="10"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    aria-describedby="mobileError"
                 >
 
                 <small id="mobileError" class="error"></small>
@@ -71,15 +87,18 @@
             <!-- Password -->
             <div class="form-group">
 
-                <label for="password">Password *</label>
+                <label for="password">
+                    Password <span>*</span>
+                </label>
 
                 <input
                     type="password"
                     id="password"
                     placeholder="Enter password"
+                    autocomplete="new-password"
+                    aria-describedby="passwordError strengthText"
                 >
 
-                <!-- Password Strength -->
                 <div class="strength-container">
                     <div id="strengthBar"></div>
                 </div>
@@ -95,13 +114,15 @@
             <div class="form-group">
 
                 <label for="confirmPassword">
-                    Confirm Password *
+                    Confirm Password <span>*</span>
                 </label>
 
                 <input
                     type="password"
                     id="confirmPassword"
                     placeholder="Re-enter password"
+                    autocomplete="new-password"
+                    aria-describedby="confirmPasswordError"
                 >
 
                 <small
@@ -115,9 +136,13 @@
             <!-- Course -->
             <div class="form-group">
 
-                <label for="course">Course *</label>
+                <label for="course">
+                    Course <span>*</span>
+                </label>
 
-                <select id="course">
+                <select
+                    id="course"
+                    aria-describedby="courseError">
 
                     <option value="">
                         -- Select Course --
@@ -149,9 +174,13 @@
             <!-- Year -->
             <div class="form-group">
 
-                <label for="year">Year *</label>
+                <label for="year">
+                    Academic Year <span>*</span>
+                </label>
 
-                <select id="year">
+                <select
+                    id="year"
+                    aria-describedby="yearError">
 
                     <option value="">
                         -- Select Year --
@@ -181,9 +210,11 @@
 
 
             <!-- Gender -->
-            <div class="form-group">
+            <fieldset class="form-group gender-fieldset">
 
-                <label>Gender *</label>
+                <legend>
+                    Gender <span>*</span>
+                </legend>
 
                 <div class="radio-group">
 
@@ -215,20 +246,22 @@
 
                 <small id="genderError" class="error"></small>
 
-            </div>
+            </fieldset>
 
 
             <!-- Terms -->
             <div class="terms">
 
-                <label>
+                <label for="terms">
 
                     <input
                         type="checkbox"
                         id="terms"
+                        aria-describedby="termsError"
                     >
 
-                    I accept the Terms and Conditions *
+                    I accept the Terms and Conditions
+                    <span>*</span>
 
                 </label>
 
@@ -244,7 +277,11 @@
 
 
             <!-- Success -->
-            <p id="successMessage"></p>
+            <p
+                id="successMessage"
+                role="status"
+                aria-live="polite">
+            </p>
 
         </form>
 

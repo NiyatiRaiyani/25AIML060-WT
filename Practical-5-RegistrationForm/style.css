@@ -5,6 +5,7 @@
     font-family: Arial, sans-serif;
 }
 
+
 body {
     background: linear-gradient(
         135deg,
@@ -21,6 +22,7 @@ body {
     padding: 30px;
 }
 
+
 .container {
     background: rgba(255, 255, 255, 0.96);
 
@@ -31,8 +33,10 @@ body {
 
     border-radius: 18px;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
 }
+
 
 h1 {
     text-align: center;
@@ -45,14 +49,6 @@ h1 {
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    margin-bottom: 8px;
-}
-
-h1 {
-    text-align: center;
-
-    color: #1f2937;
 
     margin-bottom: 8px;
 }
@@ -72,7 +68,8 @@ h1 {
 }
 
 
-label {
+label,
+legend {
     display: block;
 
     font-weight: bold;
@@ -80,6 +77,12 @@ label {
     color: #374151;
 
     margin-bottom: 7px;
+}
+
+
+label span,
+legend span {
+    color: #dc2626;
 }
 
 
@@ -105,11 +108,8 @@ select {
 }
 
 
-/* Normal Focus */
-
 input:focus,
 select:focus {
-
     border-color: #2563eb;
 
     box-shadow:
@@ -117,32 +117,23 @@ select:focus {
 }
 
 
-/* VALID INPUT */
-
 input.valid,
 select.valid {
-
     border: 2px solid #16a34a;
 
     background-color: #f0fdf4;
 }
 
 
-/* INVALID INPUT */
-
 input.invalid,
 select.invalid {
-
     border: 2px solid #dc2626;
 
     background-color: #fff5f5;
 }
 
 
-/* Error Message */
-
 .error {
-
     display: block;
 
     color: #dc2626;
@@ -155,10 +146,12 @@ select.invalid {
 }
 
 
-/* Radio Buttons */
+.gender-fieldset {
+    border: none;
+}
+
 
 .radio-group {
-
     display: flex;
 
     gap: 25px;
@@ -168,7 +161,6 @@ select.invalid {
 
 
 .radio-group label {
-
     font-weight: normal;
 
     display: flex;
@@ -176,19 +168,22 @@ select.invalid {
     align-items: center;
 
     gap: 5px;
+
+    margin-bottom: 0;
 }
 
 
 .radio-group input {
-
     width: auto;
 }
 
 
-/* Terms */
+.terms {
+    margin-bottom: 10px;
+}
+
 
 .terms label {
-
     font-weight: normal;
 
     display: flex;
@@ -200,15 +195,11 @@ select.invalid {
 
 
 .terms input {
-
     width: auto;
 }
 
 
-/* Password Strength */
-
 .strength-container {
-
     width: 100%;
 
     height: 7px;
@@ -224,7 +215,6 @@ select.invalid {
 
 
 #strengthBar {
-
     height: 100%;
 
     width: 0%;
@@ -234,7 +224,6 @@ select.invalid {
 
 
 #strengthText {
-
     display: block;
 
     font-size: 13px;
@@ -245,10 +234,7 @@ select.invalid {
 }
 
 
-/* Submit Button */
-
 button {
-
     width: 100%;
 
     padding: 13px;
@@ -268,19 +254,22 @@ button {
     cursor: pointer;
 
     margin-top: 15px;
+
+    transition: 0.2s;
 }
 
 
 button:hover {
-
     background: #1d4ed8;
 }
 
 
-/* Success Message */
+button:focus {
+    outline: 3px solid rgba(37, 99, 235, 0.3);
+}
+
 
 #successMessage {
-
     text-align: center;
 
     color: #15803d;
@@ -288,4 +277,23 @@ button:hover {
     font-weight: bold;
 
     margin-top: 15px;
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 25px 20px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
 }
