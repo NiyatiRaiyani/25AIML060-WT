@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "name": "Niyati Raiyani",
+        "email": "25aiml060@charusat.edu.in",
+        "department": "AIML",
+        "year": "2nd Year",
+        "cgpa": 8.7,
+        "city": "Gondal"
+    },
+    {
+        "id": 2,
+        "name": "Dhanvi Patel",
+        "email": "25aiml061@charusat.edu.in",
+        "department": "CSE",
+        "year": "2nd Year",
+        "cgpa": 8.4,
+        "city": "Ahmedabad"
+    },
+    {
+        "id": 3,
+        "name": "Krina Sorathiya",
+        "email": "25aiml062@charusat.edu.in",
+        "department": "IT",
+        "year": "2nd Year",
+        "cgpa": 8.9,
+        "city": "Rajkot"
+    },
+    {
+        "id": 4,
+        "name": "Priya Shah",
+        "email": "25aiml063@charusat.edu.in",
+        "department": "AIML",
+        "year": "1st Year",
+        "cgpa": 9.1,
+        "city": "Vadodara"
+    },
+    {
+        "id": 5,
+        "name": "Riya Mehta",
+        "email": "25aiml064@charusat.edu.in",
+        "department": "CSE",
+        "year": "3rd Year",
+        "cgpa": 8.2,
+        "city": "Surat"
+    },
+    {
+        "id": 6,
+        "name": "Aarav Joshi",
+        "email": "25aiml065@charusat.edu.in",
+        "department": "IT",
+        "year": "1st Year",
+        "cgpa": 8.6,
+        "city": "Anand"
+    },
+    {
+        "id": 7,
+        "name": "Dhruvi Patel",
+        "email": "25aiml066@charusat.edu.in",
+        "department": "AIML",
+        "year": "3rd Year",
+        "cgpa": 9.0,
+        "city": "Nadiad"
+    },
+    {
+        "id": 8,
+        "name": "Harsh Trivedi",
+        "email": "25aiml067@charusat.edu.in",
+        "department": "CSE",
+        "year": "2nd Year",
+        "cgpa": 7.9,
+        "city": "Rajkot"
+    },
+    {
+        "id": 9,
+        "name": "Mansi Desai",
+        "email": "25aiml068@charusat.edu.in",
+        "department": "IT",
+        "year": "3rd Year",
+        "cgpa": 8.5,
+        "city": "Vadodara"
+    },
+    {
+        "id": 10,
+        "name": "Yash Thakkar",
+        "email": "25aiml069@charusat.edu.in",
+        "department": "AIML",
+        "year": "1st Year",
+        "cgpa": 8.8,
+        "city": "Ahmedabad"
+    },
+    {
+        "id": 11,
+        "name": "Hetvi Shah",
+        "email": "25aiml070@charusat.edu.in",
+        "department": "CSE",
+        "year": "3rd Year",
+        "cgpa": 9.2,
+        "city": "Surat"
+    },
+    {
+        "id": 12,
+        "name": "Meet Patel",
+        "email": "25aiml071@charusat.edu.in",
+        "department": "IT",
+        "year": "2nd Year",
+        "cgpa": 7.8,
+        "city": "Anand"
+    },
+    {
+        "id": 13,
+        "name": "Jinal Dave",
+        "email": "25aiml072@charusat.edu.in",
+        "department": "AIML",
+        "year": "2nd Year",
+        "cgpa": 8.3,
+        "city": "Nadiad"
+    },
+    {
+        "id": 14,
+        "name": "Parth Vora",
+        "email": "25aiml073@charusat.edu.in",
+        "department": "CSE",
+        "year": "1st Year",
+        "cgpa": 8.1,
+        "city": "Gandhinagar"
+    },
+    {
+        "id": 15,
+        "name": "Kavya Patel",
+        "email": "25aiml074@charusat.edu.in",
+        "department": "IT",
+        "year": "3rd Year",
+        "cgpa": 9.3,
+        "city": "Rajkot"
+    }
+]

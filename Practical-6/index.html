@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Records</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Student Records</h1>
+            <p>Charusat Student Information Portal</p>
+            <span>CHARUSAT University</span>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <section class="top-section">
+
+            <div>
+                <h2>Student List</h2>
+                <p>View and manage student information</p>
+            </div>
+
+            <button id="reloadBtn">↻ Reload Data</button>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="controls">
+
+            <div class="search-box">
+                <label for="search">Search</label>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search by name or email..."
+                >
+            </div>
+
+
+            <div>
+                <label for="department">Department</label>
+
+                <select id="department">
+
+                    <option value="all">
+                        All Departments
+                    </option>
+
+                    <option value="AIML">
+                        AIML
+                    </option>
+
+                    <option value="CSE">
+                        CSE
+                    </option>
+
+                    <option value="IT">
+                        IT
+                    </option>
+
+                </select>
+            </div>
+
+
+            <div>
+                <label for="sort">Sort By</label>
+
+                <select id="sort">
+
+                    <option value="default">
+                        Default
+                    </option>
+
+                    <option value="nameAsc">
+                        Name A-Z
+                    </option>
+
+                    <option value="nameDesc">
+                        Name Z-A
+                    </option>
+
+                    <option value="cgpaHigh">
+                        CGPA High-Low
+                    </option>
+
+                    <option value="cgpaLow">
+                        CGPA Low-High
+                    </option>
+
+                </select>
+            </div>
+
+        </section>
+
+
+        <!-- Status -->
+        <div class="status">
+
+            <p id="count">
+                Total Students: 0
+            </p>
+
+            <p id="loading">
+                Loading students...
+            </p>
+
+            <p id="error"></p>
+
+        </div>
+
+
+        <!-- Student Records -->
+        <section id="studentList"></section>
+
+
+        <!-- Pagination -->
+        <div class="pagination">
+
+            <button id="previous">
+                Previous
+            </button>
+
+            <span id="page">
+                Page 1 of 1
+            </span>
+
+            <button id="next">
+                Next
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Niyati Raiyani | CHARUSAT University
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
