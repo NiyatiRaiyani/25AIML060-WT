@@ -1,131 +1,200 @@
+// ==========================================
+// CHARUSAT STUDENT PORTAL
+// Practical 6 - Fetch API
+// ==========================================
+
+
+// Store all student records here after fetching JSON
 let students = [];
+
+
+// Current page number
 let currentPage = 1;
 
-const recordsPerPage = 6;
+
+// Number of students displayed on one page
+const studentsPerPage = 6;
 
 
-// Load student data
+// Get HTML elements
+const searchInput = document.getElementById("searchInput");
+const departmentFilter = document.getElementById("departmentFilter");
+const yearFilter = document.getElementById("yearFilter");
+const sortFilter = document.getElementById("sortFilter");
+
+const studentTableBody = document.getElementById("studentTableBody");
+
+const totalStudents = document.getElementById("totalStudents");
+const aimlStudents = document.getElementById("aimlStudents");
+const cseStudents = document.getElementById("cseStudents");
+const itStudents = document.getElementById("itStudents");
+
+const resultCount = document.getElementById("resultCount");
+
+const loadingMessage = document.getElementById("loadingMessage");
+const errorMessage = document.getElementById("errorMessage");
+const emptyMessage = document.getElementById("emptyMessage");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const pageInfo = document.getElementById("pageInfo");
+
+const reloadBtn = document.getElementById("reloadBtn");
+
+
+// ==========================================
+// LOAD STUDENTS FROM EXTERNAL JSON
+// ==========================================
+
 async function loadStudents() {
 
-    const loading = document.getElementById("loading");
-    const error = document.getElementById("error");
+    loadingMessage.style.display = "flex";
+    errorMessage.style.display = "none";
+    emptyMessage.style.display = "none";
 
-    loading.style.display = "block";
-    error.textContent = "";
+    studentTableBody.innerHTML = "";
 
     try {
 
+        // Fetch external JSON file
         const response = await fetch("students.json");
 
+        // Check whether the request was successful
         if (!response.ok) {
-            throw new Error("Unable to load student data.");
+            throw new Error("Unable to fetch student data.");
         }
 
+        // Convert JSON response into JavaScript data
         students = await response.json();
 
+        // Reset page after loading data
         currentPage = 1;
 
+        // Update dashboard statistics
+        updateStatistics();
+
+        // Display student records
         displayStudents();
 
-    }
-    catch (err) {
+    } catch (error) {
 
-        error.textContent = err.message;
+        console.error(error);
 
-    }
-    finally {
+        errorMessage.style.display = "flex";
 
-        loading.style.display = "none";
+        studentTableBody.innerHTML = "";
 
+        resultCount.textContent = "0 records";
+
+        pageInfo.textContent = "Page 1 of 1";
+
+    } finally {
+
+        // Hide loading message after success or error
+        loadingMessage.style.display = "none";
     }
 }
 
 
-// Get filtered students
+// ==========================================
+// UPDATE STATISTICS
+// ==========================================
+
+function updateStatistics() {
+
+    const total = students.length;
+
+    const aiml = students.filter(function(student) {
+        return student.department === "AIML";
+    }).length;
+
+    const cse = students.filter(function(student) {
+        return student.department === "CSE";
+    }).length;
+
+    const it = students.filter(function(student) {
+        return student.department === "IT";
+    }).length;
+
+
+    totalStudents.textContent = total;
+    aimlStudents.textContent = aiml;
+    cseStudents.textContent = cse;
+    itStudents.textContent = it;
+}
+
+
+// ==========================================
+// GET FILTERED STUDENTS
+// ==========================================
+
 function getFilteredStudents() {
 
-    const searchText =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
+    const searchText = searchInput.value.toLowerCase().trim();
 
-    const department =
-        document.getElementById("department").value;
+    const selectedDepartment = departmentFilter.value;
 
-    let result = students.filter(function(student) {
+    const selectedYear = yearFilter.value;
 
-        return (
+
+    let filteredStudents = students.filter(function(student) {
+
+        const matchesSearch =
             student.name.toLowerCase().includes(searchText) ||
-            student.email.toLowerCase().includes(searchText)
-        );
+            student.id.toLowerCase().includes(searchText) ||
+            student.email.toLowerCase().includes(searchText);
 
+
+        const matchesDepartment =
+            selectedDepartment === "All" ||
+            student.department === selectedDepartment;
+
+
+        const matchesYear =
+            selectedYear === "All" ||
+            student.year === selectedYear;
+
+
+        return matchesSearch && matchesDepartment && matchesYear;
     });
 
 
-    // Department filter
-    if (department !== "all") {
-
-        result = result.filter(function(student) {
-
-            return student.department === department;
-
-        });
-
-    }
-
-
-    return result;
+    return filteredStudents;
 }
 
 
-// Sort students
+// ==========================================
+// SORT STUDENTS
+// ==========================================
+
 function sortStudents(studentList) {
 
-    const sortValue =
-        document.getElementById("sort").value;
+    const sortValue = sortFilter.value;
 
 
-    if (sortValue === "nameAsc") {
+    if (sortValue === "name-asc") {
 
         studentList.sort(function(a, b) {
-
             return a.name.localeCompare(b.name);
-
         });
 
-    }
-
-
-    else if (sortValue === "nameDesc") {
+    } else if (sortValue === "name-desc") {
 
         studentList.sort(function(a, b) {
-
             return b.name.localeCompare(a.name);
-
         });
 
-    }
-
-
-    else if (sortValue === "cgpaHigh") {
+    } else if (sortValue === "cgpa-high") {
 
         studentList.sort(function(a, b) {
-
             return b.cgpa - a.cgpa;
-
         });
 
-    }
-
-
-    else if (sortValue === "cgpaLow") {
+    } else if (sortValue === "cgpa-low") {
 
         studentList.sort(function(a, b) {
-
             return a.cgpa - b.cgpa;
-
         });
-
     }
 
 
@@ -133,215 +202,251 @@ function sortStudents(studentList) {
 }
 
 
-// Display students
+// ==========================================
+// DISPLAY STUDENTS
+// ==========================================
+
 function displayStudents() {
 
-    let result = getFilteredStudents();
+    let filteredStudents = getFilteredStudents();
 
-    result = sortStudents(result);
-
-
-    const start =
-        (currentPage - 1) * recordsPerPage;
-
-    const end =
-        start + recordsPerPage;
+    filteredStudents = sortStudents(filteredStudents);
 
 
-    const pageStudents =
-        result.slice(start, end);
+    // Update result count
+    resultCount.textContent =
+        filteredStudents.length + " records";
 
 
-    const studentList =
-        document.getElementById("studentList");
+    // If there are no matching students
+    if (filteredStudents.length === 0) {
 
+        studentTableBody.innerHTML = "";
 
-    studentList.innerHTML = "";
+        emptyMessage.style.display = "block";
 
+        updatePagination(0);
 
-    if (pageStudents.length === 0) {
-
-        studentList.innerHTML =
-            "<p>No student records found.</p>";
-
+        return;
     }
 
-    else {
 
-        pageStudents.forEach(function(student) {
+    emptyMessage.style.display = "none";
 
-            studentList.innerHTML += `
 
-                <div class="student">
+    // Calculate total pages
+    const totalPages =
+        Math.ceil(filteredStudents.length / studentsPerPage);
 
-                    <p class="student-id">
-                        Student ID: ${student.id}
-                    </p>
 
-                    <span class="badge">
+    // If current page becomes greater than total pages
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+
+
+    // Calculate start and end positions
+    const startIndex =
+        (currentPage - 1) * studentsPerPage;
+
+    const endIndex =
+        startIndex + studentsPerPage;
+
+
+    // slice() gets only the records for current page
+    const pageStudents =
+        filteredStudents.slice(startIndex, endIndex);
+
+
+    studentTableBody.innerHTML = "";
+
+
+    // Display every student in the current page
+    pageStudents.forEach(function(student) {
+
+        let departmentClass = "";
+
+        if (student.department === "AIML") {
+            departmentClass = "badge-aiml";
+        } else if (student.department === "CSE") {
+            departmentClass = "badge-cse";
+        } else {
+            departmentClass = "badge-it";
+        }
+
+
+        const row = `
+            <tr>
+
+                <td>
+                    <span class="student-id">
+                        ${student.id}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="student-name">
+                        ${student.name}
+                    </span>
+                </td>
+
+                <td>
+                    <a
+                        class="email"
+                        href="mailto:${student.email}"
+                    >
+                        ${student.email}
+                    </a>
+                </td>
+
+                <td>
+                    <span class="badge ${departmentClass}">
                         ${student.department}
                     </span>
+                </td>
 
-                    <h3>
-                        ${student.name}
-                    </h3>
-
-                    <p>
-                        <strong>Email:</strong>
-                        ${student.email}
-                    </p>
-
-                    <p>
-                        <strong>Department:</strong>
-                        ${student.department}
-                    </p>
-
-                    <p>
-                        <strong>Year:</strong>
+                <td>
+                    <span class="badge year-badge">
                         ${student.year}
-                    </p>
+                    </span>
+                </td>
 
-                    <p>
-                        <strong>CGPA:</strong>
-                        ${student.cgpa}
-                    </p>
+                <td>
+                    <span class="cgpa">
+                        ${student.cgpa.toFixed(1)}
+                    </span>
+                </td>
 
-                    <p>
-                        <strong>City:</strong>
-                        ${student.city}
-                    </p>
+                <td>
+                    ${student.city}
+                </td>
 
-                </div>
-
-            `;
-
-        });
-
-    }
+            </tr>
+        `;
 
 
-    document.getElementById("count").textContent =
-        "Total Students: " + result.length;
+        studentTableBody.innerHTML += row;
+    });
 
 
-    updatePagination(result.length);
+    updatePagination(totalPages);
 }
 
 
-// Update pagination
-function updatePagination(totalStudents) {
+// ==========================================
+// UPDATE PAGINATION
+// ==========================================
 
-    let totalPages =
-        Math.ceil(totalStudents / recordsPerPage);
-
+function updatePagination(totalPages) {
 
     if (totalPages === 0) {
-        totalPages = 1;
+
+        pageInfo.textContent = "Page 1 of 1";
+
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+
+        return;
     }
 
 
-    document.getElementById("page").textContent =
+    pageInfo.textContent =
         "Page " + currentPage + " of " + totalPages;
 
 
-    document.getElementById("previous").disabled =
-        currentPage === 1;
+    // Disable previous on first page
+    prevBtn.disabled = currentPage === 1;
 
 
-    document.getElementById("next").disabled =
-        currentPage === totalPages;
+    // Disable next on last page
+    nextBtn.disabled = currentPage === totalPages;
 }
 
 
-// Search event
-document.getElementById("search").addEventListener(
-    "input",
-    function() {
+// ==========================================
+// SEARCH AND FILTER EVENTS
+// ==========================================
 
-        currentPage = 1;
+searchInput.addEventListener("input", function() {
+
+    currentPage = 1;
+
+    displayStudents();
+});
+
+
+departmentFilter.addEventListener("change", function() {
+
+    currentPage = 1;
+
+    displayStudents();
+});
+
+
+yearFilter.addEventListener("change", function() {
+
+    currentPage = 1;
+
+    displayStudents();
+});
+
+
+sortFilter.addEventListener("change", function() {
+
+    currentPage = 1;
+
+    displayStudents();
+});
+
+
+// ==========================================
+// PREVIOUS BUTTON
+// ==========================================
+
+prevBtn.addEventListener("click", function() {
+
+    if (currentPage > 1) {
+
+        currentPage--;
 
         displayStudents();
-
     }
-);
+});
 
 
-// Department filter event
-document.getElementById("department").addEventListener(
-    "change",
-    function() {
+// ==========================================
+// NEXT BUTTON
+// ==========================================
 
-        currentPage = 1;
+nextBtn.addEventListener("click", function() {
+
+    const filteredStudents = getFilteredStudents();
+
+    const totalPages =
+        Math.ceil(filteredStudents.length / studentsPerPage);
+
+
+    if (currentPage < totalPages) {
+
+        currentPage++;
 
         displayStudents();
-
     }
-);
+});
 
 
-// Sort event
-document.getElementById("sort").addEventListener(
-    "change",
-    function() {
+// ==========================================
+// RELOAD BUTTON
+// ==========================================
 
-        currentPage = 1;
+reloadBtn.addEventListener("click", function() {
 
-        displayStudents();
-
-    }
-);
+    loadStudents();
+});
 
 
-// Previous button event
-document.getElementById("previous").addEventListener(
-    "click",
-    function() {
+// ==========================================
+// LOAD DATA WHEN PAGE OPENS
+// ==========================================
 
-        if (currentPage > 1) {
-
-            currentPage--;
-
-            displayStudents();
-
-        }
-
-    }
-);
-
-
-// Next button event
-document.getElementById("next").addEventListener(
-    "click",
-    function() {
-
-        const result = getFilteredStudents();
-
-        const totalPages =
-            Math.ceil(result.length / recordsPerPage);
-
-
-        if (currentPage < totalPages) {
-
-            currentPage++;
-
-            displayStudents();
-
-        }
-
-    }
-);
-
-
-// Reload button event
-document.getElementById("reloadBtn").addEventListener(
-    "click",
-    function() {
-
-        loadStudents();
-
-    }
-);
-
-
-// Load data when page opens
 loadStudents();

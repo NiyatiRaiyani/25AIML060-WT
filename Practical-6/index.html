@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Records</title>
+    <title>CHARUSAT Student Portal</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,136 +12,248 @@
 <body>
 
     <!-- Header -->
-    <header>
-        <div class="header-content">
-            <h1>Student Records</h1>
-            <p>Charusat Student Information Portal</p>
-            <span>CHARUSAT University</span>
+    <header class="top-header">
+        <div class="header-container">
+
+            <div class="brand-section">
+                <div class="charusat-logo">C</div>
+
+                <div class="brand-text">
+                    <h1>CHARUSAT</h1>
+                    <p>Student Information Portal</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="academic-year">
+                    <span>Academic Year</span>
+                    <strong>2026–27</strong>
+                </div>
+
+                <button id="reloadBtn" class="reload-btn">
+                    ↻ Reload Data
+                </button>
+            </div>
+
         </div>
     </header>
 
 
-    <!-- Main Content -->
     <main>
 
-        <section class="top-section">
+        <!-- Dashboard Welcome -->
+        <section class="dashboard-section">
 
-            <div>
-                <h2>Student List</h2>
-                <p>View and manage student information</p>
-            </div>
+            <div class="welcome-content">
+                <div>
+                    <span class="portal-label">STUDENT DIRECTORY</span>
 
-            <button id="reloadBtn">↻ Reload Data</button>
+                    <h2>Welcome to the Student Portal</h2>
 
-        </section>
+                    <p>
+                        Explore student information from CHARUSAT University
+                        using a simple and interactive student directory.
+                    </p>
+                </div>
 
-
-        <!-- Search and Filter -->
-        <section class="controls">
-
-            <div class="search-box">
-                <label for="search">Search</label>
-
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Search by name or email..."
-                >
+                <div class="welcome-icon">
+                    🎓
+                </div>
             </div>
 
 
-            <div>
-                <label for="department">Department</label>
+            <!-- Statistics -->
+            <div class="statistics-grid">
 
-                <select id="department">
+                <div class="stat-card total-card">
+                    <div class="stat-icon">👥</div>
+                    <div>
+                        <span>Total Students</span>
+                        <h3 id="totalStudents">0</h3>
+                    </div>
+                </div>
 
-                    <option value="all">
-                        All Departments
-                    </option>
+                <div class="stat-card aiml-card">
+                    <div class="stat-icon">🤖</div>
+                    <div>
+                        <span>AIML Students</span>
+                        <h3 id="aimlStudents">0</h3>
+                    </div>
+                </div>
 
-                    <option value="AIML">
-                        AIML
-                    </option>
+                <div class="stat-card cse-card">
+                    <div class="stat-icon">💻</div>
+                    <div>
+                        <span>CSE Students</span>
+                        <h3 id="cseStudents">0</h3>
+                    </div>
+                </div>
 
-                    <option value="CSE">
-                        CSE
-                    </option>
+                <div class="stat-card it-card">
+                    <div class="stat-icon">🌐</div>
+                    <div>
+                        <span>IT Students</span>
+                        <h3 id="itStudents">0</h3>
+                    </div>
+                </div>
 
-                    <option value="IT">
-                        IT
-                    </option>
-
-                </select>
-            </div>
-
-
-            <div>
-                <label for="sort">Sort By</label>
-
-                <select id="sort">
-
-                    <option value="default">
-                        Default
-                    </option>
-
-                    <option value="nameAsc">
-                        Name A-Z
-                    </option>
-
-                    <option value="nameDesc">
-                        Name Z-A
-                    </option>
-
-                    <option value="cgpaHigh">
-                        CGPA High-Low
-                    </option>
-
-                    <option value="cgpaLow">
-                        CGPA Low-High
-                    </option>
-
-                </select>
             </div>
 
         </section>
 
 
-        <!-- Status -->
-        <div class="status">
+        <!-- Filter Section -->
+        <section class="portal-content">
 
-            <p id="count">
-                Total Students: 0
-            </p>
+            <div class="section-heading">
+                <div>
+                    <span class="small-title">DIRECTORY</span>
+                    <h2>Student Records</h2>
+                </div>
 
-            <p id="loading">
-                Loading students...
-            </p>
-
-            <p id="error"></p>
-
-        </div>
+                <p id="resultCount">0 records</p>
+            </div>
 
 
-        <!-- Student Records -->
-        <section id="studentList"></section>
+            <div class="filter-panel">
+
+                <div class="filter-header">
+                    <div>
+                        <h3>Find Student</h3>
+                        <p>Search, filter and sort student records</p>
+                    </div>
+                </div>
 
 
-        <!-- Pagination -->
-        <div class="pagination">
+                <div class="filters">
 
-            <button id="previous">
-                Previous
-            </button>
+                    <!-- Search -->
+                    <div class="filter-group search-group">
+                        <label for="searchInput">Search Student</label>
 
-            <span id="page">
-                Page 1 of 1
-            </span>
+                        <div class="search-box">
+                            <span>⌕</span>
 
-            <button id="next">
-                Next
-            </button>
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Name, ID or email..."
+                            >
+                        </div>
+                    </div>
 
-        </div>
+
+                    <!-- Department -->
+                    <div class="filter-group">
+                        <label for="departmentFilter">Department</label>
+
+                        <select id="departmentFilter">
+                            <option value="All">All Departments</option>
+                            <option value="AIML">AIML</option>
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Year -->
+                    <div class="filter-group">
+                        <label for="yearFilter">Year</label>
+
+                        <select id="yearFilter">
+                            <option value="All">All Years</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Sort -->
+                    <div class="filter-group">
+                        <label for="sortFilter">Sort By</label>
+
+                        <select id="sortFilter">
+                            <option value="default">Default</option>
+                            <option value="name-asc">Name A-Z</option>
+                            <option value="name-desc">Name Z-A</option>
+                            <option value="cgpa-high">CGPA High-Low</option>
+                            <option value="cgpa-low">CGPA Low-High</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Loading -->
+            <div id="loadingMessage" class="status-message loading">
+                <div class="spinner"></div>
+                <span>Loading student records...</span>
+            </div>
+
+
+            <!-- Error -->
+            <div id="errorMessage" class="status-message error">
+                <span class="status-icon">!</span>
+                <span>Unable to load student data. Please try again.</span>
+            </div>
+
+
+            <!-- Table -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Year</th>
+                            <th>CGPA</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTableBody">
+                        <!-- JavaScript will insert records here -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Empty Result -->
+            <div id="emptyMessage" class="empty-message">
+                <div>⌕</div>
+                <h3>No student records found.</h3>
+                <p>Try changing your search or filter options.</p>
+            </div>
+
+
+            <!-- Pagination -->
+            <div class="pagination">
+
+                <button id="prevBtn" class="page-btn">
+                    ← Previous
+                </button>
+
+                <div id="pageInfo" class="page-info">
+                    Page 1 of 1
+                </div>
+
+                <button id="nextBtn" class="page-btn">
+                    Next →
+                </button>
+
+            </div>
+
+        </section>
 
     </main>
 
@@ -150,9 +261,24 @@
     <!-- Footer -->
     <footer>
 
-        <p>
-            © 2026 Niyati Raiyani | CHARUSAT University
-        </p>
+        <div class="footer-content">
+
+            <div>
+                <div class="footer-brand">
+                    <div class="footer-logo">C</div>
+
+                    <div>
+                        <h3>CHARUSAT University</h3>
+                        <p>Student Information Portal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <p>© 2026 CHARUSAT | Student Records</p>
+            </div>
+
+        </div>
 
     </footer>
 
@@ -160,5 +286,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
