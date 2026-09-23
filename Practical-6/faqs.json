@@ -1,0 +1,63 @@
+
+[
+    {
+        "question": "How can I search for a student?",
+        "answer": "Enter the student name, email or course in the search box."
+    },
+    {
+        "question": "Can I filter students by year?",
+        "answer": "Yes, select the required year from the year filter."
+    },
+    {
+        "question": "Can student records be sorted?",
+        "answer": "Yes, records can be sorted by name or CGPA."
+    },
+    {
+        "question": "How many students are displayed on one page?",
+        "answer": "Six student records are displayed on each page."
+    },
+    {
+        "question": "What is Fetch API?",
+        "answer": "Fetch API is used to request data from external resources."
+    },
+    {
+        "question": "Where is student data stored?",
+        "answer": "Student information is stored in the students.json file."
+    },
+    {
+        "question": "Where is event data stored?",
+        "answer": "Event information is stored in the events.json file."
+    },
+    {
+        "question": "How is JSON data converted?",
+        "answer": "The response is converted into JavaScript data using response.json()."
+    },
+    {
+        "question": "What happens when data cannot be loaded?",
+        "answer": "An error message is displayed and the error is shown in the console."
+    },
+    {
+        "question": "Which array methods are used?",
+        "answer": "The project uses filter, sort, map and slice methods."
+    },
+    {
+        "question": "What is async and await?",
+        "answer": "They are used to handle asynchronous operations in JavaScript."
+    },
+    {
+        "question": "Can the JSON data be changed?",
+        "answer": "Yes, records can be added or updated in the JSON files."
+    },
+    {
+        "question": "What is pagination?",
+        "answer": "Pagination divides a large list of records into smaller pages."
+    },
+    {
+        "question": "Is the portal responsive?",
+        "answer": "Yes, CSS media queries make the website work on smaller screens."
+    },
+    {
+        "question": "Which technologies are used?",
+        "answer": "The project uses HTML5, CSS3, JavaScript ES6+ and JSON."
+    }
+]

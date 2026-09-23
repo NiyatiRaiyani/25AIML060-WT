@@ -1,452 +1,308 @@
-// ==========================================
-// CHARUSAT STUDENT PORTAL
-// Practical 6 - Fetch API
-// ==========================================
 
+const studentData = document.getElementById("studentData");
+const eventData = document.getElementById("eventData");
+const faqData = document.getElementById("faqData");
 
-// Store all student records here after fetching JSON
-let students = [];
+const status = document.getElementById("status");
+const studentCount = document.getElementById("studentCount");
 
-
-// Current page number
-let currentPage = 1;
-
-
-// Number of students displayed on one page
-const studentsPerPage = 6;
-
-
-// Get HTML elements
-const searchInput = document.getElementById("searchInput");
-const departmentFilter = document.getElementById("departmentFilter");
+const search = document.getElementById("search");
 const yearFilter = document.getElementById("yearFilter");
-const sortFilter = document.getElementById("sortFilter");
+const sortBy = document.getElementById("sortBy");
 
-const studentTableBody = document.getElementById("studentTableBody");
-
-const totalStudents = document.getElementById("totalStudents");
-const aimlStudents = document.getElementById("aimlStudents");
-const cseStudents = document.getElementById("cseStudents");
-const itStudents = document.getElementById("itStudents");
-
-const resultCount = document.getElementById("resultCount");
-
-const loadingMessage = document.getElementById("loadingMessage");
-const errorMessage = document.getElementById("errorMessage");
-const emptyMessage = document.getElementById("emptyMessage");
-
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const pageInfo = document.getElementById("pageInfo");
-
+const fetchBtn = document.getElementById("fetchBtn");
 const reloadBtn = document.getElementById("reloadBtn");
 
+const pagination = document.getElementById("pagination");
 
-// ==========================================
-// LOAD STUDENTS FROM EXTERNAL JSON
-// ==========================================
+let students = [];
+let currentPage = 1;
 
-async function loadStudents() {
+const recordsPerPage = 6;
 
-    loadingMessage.style.display = "flex";
-    errorMessage.style.display = "none";
-    emptyMessage.style.display = "none";
 
-    studentTableBody.innerHTML = "";
+// Fetch all JSON files
+async function fetchData() {
+
+    status.innerHTML = "Loading data...";
 
     try {
 
-        // Fetch external JSON file
-        const response = await fetch("students.json");
+        const studentResponse = await fetch("students.json");
+        const eventResponse = await fetch("events.json");
+        const faqResponse = await fetch("faqs.json");
 
-        // Check whether the request was successful
-        if (!response.ok) {
-            throw new Error("Unable to fetch student data.");
+        if (
+            !studentResponse.ok ||
+            !eventResponse.ok ||
+            !faqResponse.ok
+        ) {
+            throw new Error("JSON file could not be loaded");
         }
 
-        // Convert JSON response into JavaScript data
-        students = await response.json();
+        students = await studentResponse.json();
 
-        // Reset page after loading data
-        currentPage = 1;
+        const events = await eventResponse.json();
+        const faqs = await faqResponse.json();
 
-        // Update dashboard statistics
-        updateStatistics();
-
-        // Display student records
         displayStudents();
+        displayEvents(events);
+        displayFAQs(faqs);
+
+        status.innerHTML =
+            "Data loaded successfully ✓";
 
     } catch (error) {
 
-        console.error(error);
+        status.innerHTML =
+            "Unable to load data. Check JSON files.";
 
-        errorMessage.style.display = "flex";
-
-        studentTableBody.innerHTML = "";
-
-        resultCount.textContent = "0 records";
-
-        pageInfo.textContent = "Page 1 of 1";
-
-    } finally {
-
-        // Hide loading message after success or error
-        loadingMessage.style.display = "none";
+        console.log(error);
     }
 }
 
 
-// ==========================================
-// UPDATE STATISTICS
-// ==========================================
+// Get filtered and sorted students
+function getStudents() {
 
-function updateStatistics() {
+    let result = students.filter(function(student) {
 
-    const total = students.length;
+        const text =
+            student.name + " " +
+            student.email + " " +
+            student.course;
 
-    const aiml = students.filter(function(student) {
-        return student.department === "AIML";
-    }).length;
+        const searchMatch =
+            text.toLowerCase()
+                .includes(search.value.toLowerCase());
 
-    const cse = students.filter(function(student) {
-        return student.department === "CSE";
-    }).length;
+        const yearMatch =
+            yearFilter.value == "all" ||
+            student.year == yearFilter.value;
 
-    const it = students.filter(function(student) {
-        return student.department === "IT";
-    }).length;
-
-
-    totalStudents.textContent = total;
-    aimlStudents.textContent = aiml;
-    cseStudents.textContent = cse;
-    itStudents.textContent = it;
-}
-
-
-// ==========================================
-// GET FILTERED STUDENTS
-// ==========================================
-
-function getFilteredStudents() {
-
-    const searchText = searchInput.value.toLowerCase().trim();
-
-    const selectedDepartment = departmentFilter.value;
-
-    const selectedYear = yearFilter.value;
-
-
-    let filteredStudents = students.filter(function(student) {
-
-        const matchesSearch =
-            student.name.toLowerCase().includes(searchText) ||
-            student.id.toLowerCase().includes(searchText) ||
-            student.email.toLowerCase().includes(searchText);
-
-
-        const matchesDepartment =
-            selectedDepartment === "All" ||
-            student.department === selectedDepartment;
-
-
-        const matchesYear =
-            selectedYear === "All" ||
-            student.year === selectedYear;
-
-
-        return matchesSearch && matchesDepartment && matchesYear;
+        return searchMatch && yearMatch;
     });
 
 
-    return filteredStudents;
-}
+    if (sortBy.value == "name") {
 
-
-// ==========================================
-// SORT STUDENTS
-// ==========================================
-
-function sortStudents(studentList) {
-
-    const sortValue = sortFilter.value;
-
-
-    if (sortValue === "name-asc") {
-
-        studentList.sort(function(a, b) {
+        result.sort(function(a, b) {
             return a.name.localeCompare(b.name);
         });
 
-    } else if (sortValue === "name-desc") {
+    } else if (sortBy.value == "high") {
 
-        studentList.sort(function(a, b) {
-            return b.name.localeCompare(a.name);
-        });
-
-    } else if (sortValue === "cgpa-high") {
-
-        studentList.sort(function(a, b) {
+        result.sort(function(a, b) {
             return b.cgpa - a.cgpa;
         });
 
-    } else if (sortValue === "cgpa-low") {
+    } else {
 
-        studentList.sort(function(a, b) {
+        result.sort(function(a, b) {
             return a.cgpa - b.cgpa;
         });
     }
 
-
-    return studentList;
+    return result;
 }
 
 
-// ==========================================
-// DISPLAY STUDENTS
-// ==========================================
-
+// Display student records
 function displayStudents() {
 
-    let filteredStudents = getFilteredStudents();
+    const result = getStudents();
 
-    filteredStudents = sortStudents(filteredStudents);
-
-
-    // Update result count
-    resultCount.textContent =
-        filteredStudents.length + " records";
+    studentCount.innerHTML =
+        result.length + " Students";
 
 
-    // If there are no matching students
-    if (filteredStudents.length === 0) {
+    const start =
+        (currentPage - 1) * recordsPerPage;
 
-        studentTableBody.innerHTML = "";
+    const pageData =
+        result.slice(start, start + recordsPerPage);
 
-        emptyMessage.style.display = "block";
 
-        updatePagination(0);
+    if (pageData.length == 0) {
+
+        studentData.innerHTML =
+            "<p class='status'>No student found.</p>";
+
+        pagination.innerHTML = "";
 
         return;
     }
 
 
-    emptyMessage.style.display = "none";
+    studentData.innerHTML =
+        pageData.map(function(student) {
+
+            return `
+                <div class="student-card">
+
+                    <div class="student-top">
+
+                        <div class="avatar">
+                            ${student.name.charAt(0)}
+                        </div>
+
+                        <div>
+                            <h3>${student.name}</h3>
+                            <p>${student.email}</p>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        <b>Course:</b> ${student.course}
+                    </p>
+
+                    <p>
+                        <b>Year:</b> ${student.year}
+                    </p>
+
+                    <div class="badges">
+
+                        <span class="badge">
+                            ${student.course}
+                        </span>
+
+                        <span class="badge cgpa">
+                            CGPA ${student.cgpa}
+                        </span>
+
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
 
 
-    // Calculate total pages
+    createPagination(result.length);
+}
+
+
+// Pagination
+function createPagination(totalRecords) {
+
     const totalPages =
-        Math.ceil(filteredStudents.length / studentsPerPage);
+        Math.ceil(totalRecords / recordsPerPage);
 
+    pagination.innerHTML = "";
 
-    // If current page becomes greater than total pages
-    if (currentPage > totalPages) {
-        currentPage = totalPages;
-    }
+    for (let i = 1; i <= totalPages; i++) {
 
+        const button =
+            document.createElement("button");
 
-    // Calculate start and end positions
-    const startIndex =
-        (currentPage - 1) * studentsPerPage;
+        button.innerHTML = i;
+        button.className = "page-btn";
 
-    const endIndex =
-        startIndex + studentsPerPage;
-
-
-    // slice() gets only the records for current page
-    const pageStudents =
-        filteredStudents.slice(startIndex, endIndex);
-
-
-    studentTableBody.innerHTML = "";
-
-
-    // Display every student in the current page
-    pageStudents.forEach(function(student) {
-
-        let departmentClass = "";
-
-        if (student.department === "AIML") {
-            departmentClass = "badge-aiml";
-        } else if (student.department === "CSE") {
-            departmentClass = "badge-cse";
-        } else {
-            departmentClass = "badge-it";
+        if (i == currentPage) {
+            button.classList.add("active");
         }
 
+        button.onclick = function() {
 
-        const row = `
-            <tr>
+            currentPage = i;
+            displayStudents();
 
-                <td>
-                    <span class="student-id">
-                        ${student.id}
-                    </span>
-                </td>
+        };
 
-                <td>
-                    <span class="student-name">
-                        ${student.name}
-                    </span>
-                </td>
-
-                <td>
-                    <a
-                        class="email"
-                        href="mailto:${student.email}"
-                    >
-                        ${student.email}
-                    </a>
-                </td>
-
-                <td>
-                    <span class="badge ${departmentClass}">
-                        ${student.department}
-                    </span>
-                </td>
-
-                <td>
-                    <span class="badge year-badge">
-                        ${student.year}
-                    </span>
-                </td>
-
-                <td>
-                    <span class="cgpa">
-                        ${student.cgpa.toFixed(1)}
-                    </span>
-                </td>
-
-                <td>
-                    ${student.city}
-                </td>
-
-            </tr>
-        `;
-
-
-        studentTableBody.innerHTML += row;
-    });
-
-
-    updatePagination(totalPages);
-}
-
-
-// ==========================================
-// UPDATE PAGINATION
-// ==========================================
-
-function updatePagination(totalPages) {
-
-    if (totalPages === 0) {
-
-        pageInfo.textContent = "Page 1 of 1";
-
-        prevBtn.disabled = true;
-        nextBtn.disabled = true;
-
-        return;
+        pagination.appendChild(button);
     }
-
-
-    pageInfo.textContent =
-        "Page " + currentPage + " of " + totalPages;
-
-
-    // Disable previous on first page
-    prevBtn.disabled = currentPage === 1;
-
-
-    // Disable next on last page
-    nextBtn.disabled = currentPage === totalPages;
 }
 
 
-// ==========================================
-// SEARCH AND FILTER EVENTS
-// ==========================================
+// Display events
+function displayEvents(events) {
 
-searchInput.addEventListener("input", function() {
+    eventData.innerHTML =
+        events.map(function(event) {
+
+            return `
+                <div class="event-card">
+
+                    <div class="event-date">
+                        ${event.date}
+                    </div>
+
+                    <h3>${event.title}</h3>
+
+                    <p>${event.description}</p>
+
+                    <br>
+
+                    <span class="badge">
+                        ${event.category}
+                    </span>
+
+                </div>
+            `;
+
+        }).join("");
+}
+
+
+// Display FAQs
+function displayFAQs(faqs) {
+
+    faqData.innerHTML =
+        faqs.map(function(faq) {
+
+            return `
+                <div class="faq">
+
+                    <h3>${faq.question}</h3>
+
+                    <p>${faq.answer}</p>
+
+                </div>
+            `;
+
+        }).join("");
+}
+
+
+// Search
+search.addEventListener("input", function() {
 
     currentPage = 1;
-
     displayStudents();
+
 });
 
 
-departmentFilter.addEventListener("change", function() {
-
-    currentPage = 1;
-
-    displayStudents();
-});
-
-
+// Year filter
 yearFilter.addEventListener("change", function() {
 
     currentPage = 1;
-
     displayStudents();
+
 });
 
 
-sortFilter.addEventListener("change", function() {
+// Sorting
+sortBy.addEventListener("change", function() {
 
     currentPage = 1;
-
     displayStudents();
+
 });
 
 
-// ==========================================
-// PREVIOUS BUTTON
-// ==========================================
+// Fetch button
+fetchBtn.addEventListener("click", function() {
 
-prevBtn.addEventListener("click", function() {
+    fetchData();
 
-    if (currentPage > 1) {
-
-        currentPage--;
-
-        displayStudents();
-    }
 });
 
 
-// ==========================================
-// NEXT BUTTON
-// ==========================================
-
-nextBtn.addEventListener("click", function() {
-
-    const filteredStudents = getFilteredStudents();
-
-    const totalPages =
-        Math.ceil(filteredStudents.length / studentsPerPage);
-
-
-    if (currentPage < totalPages) {
-
-        currentPage++;
-
-        displayStudents();
-    }
-});
-
-
-// ==========================================
-// RELOAD BUTTON
-// ==========================================
-
+// Reload button
 reloadBtn.addEventListener("click", function() {
 
-    loadStudents();
+    fetchData();
+
 });
-
-
-// ==========================================
-// LOAD DATA WHEN PAGE OPENS
-// ==========================================
-
-loadStudents();

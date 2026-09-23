@@ -1,0 +1,93 @@
+
+[
+    {
+        "title": "TechFest 2026",
+        "date": "20 Sep 2026",
+        "category": "Technical",
+        "description": "Technology and innovation festival for university students."
+    },
+    {
+        "title": "AI Workshop",
+        "date": "22 Sep 2026",
+        "category": "Workshop",
+        "description": "Hands-on workshop covering basic Artificial Intelligence concepts."
+    },
+    {
+        "title": "Coding Challenge",
+        "date": "25 Sep 2026",
+        "category": "Competition",
+        "description": "Programming competition for students."
+    },
+    {
+        "title": "Sports Meet",
+        "date": "28 Sep 2026",
+        "category": "Sports",
+        "description": "Annual sports activities and competitions."
+    },
+    {
+        "title": "Robotics Expo",
+        "date": "30 Sep 2026",
+        "category": "Exhibition",
+        "description": "Students showcase their robotics projects."
+    },
+    {
+        "title": "Cultural Night",
+        "date": "03 Oct 2026",
+        "category": "Cultural",
+        "description": "Music, dance and cultural performances."
+    },
+    {
+        "title": "Hackathon 2026",
+        "date": "05 Oct 2026",
+        "category": "Technical",
+        "description": "Software development event based on real-world problems."
+    },
+    {
+        "title": "Career Seminar",
+        "date": "08 Oct 2026",
+        "category": "Career",
+        "description": "Career guidance and placement preparation session."
+    },
+    {
+        "title": "Cyber Security Talk",
+        "date": "10 Oct 2026",
+        "category": "Seminar",
+        "description": "Awareness session about cyber security."
+    },
+    {
+        "title": "Photography Contest",
+        "date": "12 Oct 2026",
+        "category": "Competition",
+        "description": "Photography competition for students."
+    },
+    {
+        "title": "Startup Meetup",
+        "date": "15 Oct 2026",
+        "category": "Business",
+        "description": "Interaction session for students interested in startups."
+    },
+    {
+        "title": "Web Development Bootcamp",
+        "date": "18 Oct 2026",
+        "category": "Workshop",
+        "description": "Practical session on modern web development."
+    },
+    {
+        "title": "Alumni Meet",
+        "date": "20 Oct 2026",
+        "category": "Alumni",
+        "description": "Students interact with university alumni."
+    },
+    {
+        "title": "Project Exhibition",
+        "date": "23 Oct 2026",
+        "category": "Exhibition",
+        "description": "Display of innovative student projects."
+    },
+    {
+        "title": "Freshers Orientation",
+        "date": "26 Oct 2026",
+        "category": "Campus",
+        "description": "Orientation programme for new university students."
+    }
+]
