@@ -157,10 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
 
     /* BROWSER CONSOLE TESTING */
+
     console.log("Practical 4 Loaded Successfully");
     console.log("Student: Niyati Raiyani");
     console.log("Student ID: 25AIML060");
     console.log("Department: AIML Department");
     console.log("Club: MathFlow Club");
     console.log("University: CHARUSAT University");
+
 });
