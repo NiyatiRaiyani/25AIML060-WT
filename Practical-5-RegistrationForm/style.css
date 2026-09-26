@@ -107,6 +107,13 @@ select.invalid {
     border: none;
 }
 
+#resetButton {
+    background: #6b7280;
+}
+
+#resetButton:hover {
+    background: #4b5563;
+}
 .radio-group {
     display: flex;
     gap: 25px;
