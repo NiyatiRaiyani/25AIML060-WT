@@ -3,88 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>CHARUSAT Student Portal</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Header -->
     <header class="header">
         <div class="brand">
             <div class="logo">C</div>
-
             <div>
                 <h2>CHARUSAT</h2>
                 <p>Student Portal</p>
             </div>
         </div>
-
         <nav>
             <a href="#students">Students</a>
             <a href="#events">Events</a>
             <a href="#faqs">FAQs</a>
         </nav>
     </header>
-
-
     <!-- Hero -->
     <section class="hero">
-
         <div class="hero-text">
             <span>CHARUSAT UNIVERSITY</span>
-
             <h1>Student Information Portal</h1>
-
             <p>
                 View student records, campus events and frequently
                 asked questions using external JSON data.
             </p>
-
             <div class="hero-buttons">
                 <button id="fetchBtn">Fetch Data</button>
-                <button id="reloadBtn" class="reload-btn">
-                    ↻ Reload Data
-                </button>
+                <button id="reloadBtn" class="reload-btn">↻ Reload Data</button>
             </div>
         </div>
-
         <div class="hero-box">
             <h3>Practical 6</h3>
             <p>External JSON Data</p>
             <strong>Fetch API</strong>
         </div>
-
     </section>
-
-
     <main>
-
         <!-- Students -->
         <section class="section" id="students">
-
             <div class="section-heading">
                 <div>
                     <span>STUDENT DIRECTORY</span>
                     <h2>Student Profiles</h2>
                 </div>
-
-                <div id="studentCount" class="count">
-                    0 Students
-                </div>
+                <div id="studentCount" class="count">0 Students</div>
             </div>
-
-
             <!-- Controls -->
             <div class="controls">
-
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="Search by name, email or course..."
-                >
-
+                <input type="text" id="search" placeholder="Search by name, email or course...">
                 <select id="yearFilter">
                     <option value="all">All Years</option>
                     <option value="1">1st Year</option>
@@ -92,92 +62,54 @@
                     <option value="3">3rd Year</option>
                     <option value="4">4th Year</option>
                 </select>
-
                 <select id="sortBy">
                     <option value="name">Sort by Name</option>
                     <option value="high">CGPA High to Low</option>
                     <option value="low">CGPA Low to High</option>
                 </select>
-
             </div>
-
-
             <!-- Status -->
             <div id="status" class="status">
                 Click "Fetch Data" to load students.
             </div>
-
-
             <!-- Student cards -->
             <div id="studentData" class="student-grid"></div>
-
-
             <!-- Pagination -->
             <div id="pagination" class="pagination"></div>
-
         </section>
-
-
         <!-- Events -->
         <section class="section" id="events">
-
             <div class="section-heading">
                 <div>
                     <span>CAMPUS ACTIVITIES</span>
                     <h2>Upcoming Events</h2>
                 </div>
             </div>
-
             <div id="eventData" class="event-grid">
-
-                <p class="status">
-                    Fetch data to view events.
-                </p>
-
+                <p class="status">Fetch data to view events.</p>
             </div>
-
         </section>
-
-
         <!-- FAQs -->
         <section class="section" id="faqs">
-
             <div class="section-heading">
                 <div>
                     <span>HELP CENTER</span>
                     <h2>Frequently Asked Questions</h2>
                 </div>
             </div>
-
             <div id="faqData" class="faq-grid">
-
-                <p class="status">
-                    Fetch data to view FAQs.
-                </p>
-
+                <p class="status">Fetch data to view FAQs.</p>
             </div>
-
         </section>
-
     </main>
-
-
     <!-- Footer -->
     <footer>
-
         <div>
             <h3>CHARUSAT Student Portal</h3>
             <p>Web Technology Practical 6</p>
         </div>
-
-        <p>
-            © 2026 CHARUSAT University | Niyati Raiyani
-        </p>
-
+        <p>© 2026 CHARUSAT University | Niyati Raiyani</p>
     </footer>
-
-
     <script src="script.js"></script>
-
 </body>
 </html>
