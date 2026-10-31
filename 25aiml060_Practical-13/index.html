@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - CRUD</title>
+</head>
+<body>
+
+    <h2>StudentHub - Student Management</h2>
+
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+
+        <button type="submit" id="submitBtn">Add Student</button>
+        <button type="button" id="cancelBtn" hidden>Cancel Edit</button>
+    </form>
+
+    <p id="message" role="status"></p>
+    <p id="loading" hidden>Loading...</p>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentList"></tbody>
+    </table>
+
+    <script>
+        const API = "api.php";
+
+        const form = document.getElementById("studentForm");
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const studentList = document.getElementById("studentList");
+        const message = document.getElementById("message");
+        const loading = document.getElementById("loading");
+        const submitBtn = document.getElementById("submitBtn");
+        const cancelBtn = document.getElementById("cancelBtn");
+
+        let editingId = null;
+
+        async function request(url, options = {}) {
+            const response = await fetch(url, options);
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || "Request failed");
+            }
+
+            return result;
+        }
+
+        async function loadStudents() {
+            loading.hidden = false;
+            message.textContent = "";
+
+            try {
+                const students = await request(API);
+                studentList.replaceChildren();
+
+                students.forEach(student => {
+                    const row = document.createElement("tr");
+
+                    [student.id, student.name, student.email].forEach(value => {
+                        const cell = document.createElement("td");
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    });
+
+                    const actions = document.createElement("td");
+
+                    const editBtn = document.createElement("button");
+                    editBtn.textContent = "Edit";
+                    editBtn.type = "button";
+                    editBtn.addEventListener("click", () => {
+                        editingId = Number(student.id);
+                        nameInput.value = student.name;
+                        emailInput.value = student.email;
+                        submitBtn.textContent = "Update Student";
+                        cancelBtn.hidden = false;
+                        nameInput.focus();
+                    });
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "Delete";
+                    deleteBtn.type = "button";
+                    deleteBtn.addEventListener("click", async () => {
+                        if (!confirm("Delete this student?")) return;
+
+                        try {
+                            const result = await request(API, {
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    id: Number(student.id)
+                                })
+                            });
+
+                            message.textContent = result.message;
+
+                            if (editingId === Number(student.id)) {
+                                resetForm();
+                            }
+
+                            await loadStudents();
+                        } catch (error) {
+                            message.textContent = error.message;
+                        }
+                    });
+
+                    actions.append(editBtn, document.createTextNode(" "), deleteBtn);
+                    row.appendChild(actions);
+                    studentList.appendChild(row);
+                });
+            } catch (error) {
+                message.textContent = error.message;
+            } finally {
+                loading.hidden = true;
+            }
+        }
+
+        function resetForm() {
+            form.reset();
+            editingId = null;
+            submitBtn.textContent = "Add Student";
+            cancelBtn.hidden = true;
+        }
+
+        cancelBtn.addEventListener("click", resetForm);
+
+        form.addEventListener("submit", async event => {
+            event.preventDefault();
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!name || !email) {
+                message.textContent = "Name and email are required";
+                return;
+            }
+
+            const method = editingId === null ? "POST" : "PUT";
+
+            const payload = { name, email };
+
+            if (editingId !== null) {
+                payload.id = editingId;
+            }
+
+            submitBtn.disabled = true;
+            message.textContent = "Processing...";
+
+            try {
+                const result = await request(API, {
+                    method,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                message.textContent = result.message;
+                resetForm();
+                await loadStudents();
+            } catch (error) {
+                message.textContent = error.message;
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+        loadStudents();
+    </script>
+
+</body>
+</html>
