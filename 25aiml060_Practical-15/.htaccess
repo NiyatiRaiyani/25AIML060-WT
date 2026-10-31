@@ -1,0 +1,5 @@
+# Keep directory listing disabled through Apache configuration if permitted.
+# Options directive is intentionally omitted for shared XAMPP configurations.
+<FilesMatch "^(config\.php|database\.php|studenthub\.sql)$">
+  Require all denied
+</FilesMatch>

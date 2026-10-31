@@ -1,0 +1,12 @@
+# Local/editor files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Runtime uploads/logs
+uploads/*
+!uploads/.gitkeep
+*.log
+# Local secrets/config overrides
+.env
+config/local.php

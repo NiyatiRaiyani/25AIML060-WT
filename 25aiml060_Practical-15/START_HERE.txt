@@ -1,0 +1,19 @@
+STUDENT DETAILS
+Student ID: 25AIML060
+Student Name: Niyati Raiyani
+Department: CSPIT - AIML
+University: CHARUSAT University
+
+STUDENTHUB - PRACTICAL 15
+
+1. Copy this folder to C:\Myxampp\htdocs\xampp\Practical-15
+2. Start Apache and MySQL in XAMPP.
+3. Open http://localhost/phpmyadmin
+4. Select/create database studenthub, then Import database/studenthub.sql
+   IMPORTANT: importing this file replaces the project's users/events/audit tables.
+5. Open http://localhost/xampp/Practical-15/setup_admin.php ONCE.
+6. Login: admin@studenthub.local  |  Password: Admin@123
+7. Delete setup_admin.php after creating the admin account.
+8. Open http://localhost/xampp/Practical-15/
+
+If Apache shows a .htaccess Options error, this package already has that directive removed.

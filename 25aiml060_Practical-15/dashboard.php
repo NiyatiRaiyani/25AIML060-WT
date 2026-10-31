@@ -1,0 +1,13 @@
+<?php
+require_once __DIR__ . '/includes/bootstrap.php'; require_login();
+$uid=current_user()['id'];
+$q=db()->prepare('SELECT name,email,mobile,course,created_at FROM users WHERE id=?'); $q->execute([$uid]); $profile=$q->fetch();
+$events=db()->query("SELECT id,title,description,event_date,venue FROM events WHERE status='published' AND event_date>=CURDATE() ORDER BY event_date LIMIT 3")->fetchAll();
+$pageTitle='Dashboard'; require __DIR__.'/includes/header.php';
+?>
+<div class="dashboard-head"><div><span class="eyebrow">STUDENT SPACE</span><h1 class="mt-2 mb-1">Hello, <?= e(current_user()['name']) ?> 👋</h1><p class="muted mb-0">Here’s what’s happening in your campus community.</p></div><a class="btn btn-primary" href="<?= e(url('profile.php')) ?>">View profile</a></div>
+<div class="stat-grid"><div class="stat-card"><small>Account type</small><strong><?= e(ucfirst(current_user()['role'])) ?></strong></div><div class="stat-card"><small>Upcoming events</small><strong><?= count($events) ?></strong></div><div class="stat-card"><small>Member since</small><strong><?= e(date('M Y',strtotime($profile['created_at']))) ?></strong></div></div>
+<div class="panel mb-4"><div class="d-flex justify-content-between align-items-center mb-3"><h2 class="h5 mb-0">Your profile</h2><a href="<?= e(url('profile.php')) ?>">Edit profile →</a></div><div class="row g-3"><div class="col-md-4"><span class="muted">Email</span><div class="fw-bold"><?= e($profile['email']) ?></div></div><div class="col-md-4"><span class="muted">Mobile</span><div class="fw-bold"><?= e($profile['mobile'] ?: 'Not added') ?></div></div><div class="col-md-4"><span class="muted">Course</span><div class="fw-bold"><?= e($profile['course'] ?: 'Not added') ?></div></div></div></div>
+<div class="d-flex justify-content-between align-items-center mb-3"><h2 class="h4">Upcoming events</h2><a href="<?= e(url('events.php')) ?>">View all →</a></div>
+<div class="event-grid"><?php foreach($events as $event): ?><article class="event-card"><span class="event-date"><?= e(date('d M Y',strtotime($event['event_date']))) ?></span><h3><?= e($event['title']) ?></h3><p class="muted"><?= e(mb_strimwidth($event['description'],0,110,'…')) ?></p><small class="muted">⌖ <?= e($event['venue']) ?></small></article><?php endforeach; ?><?php if(!$events): ?><div class="panel empty-state">No upcoming events yet. Check back soon.</div><?php endif; ?></div>
+<?php require __DIR__.'/includes/footer.php'; ?>

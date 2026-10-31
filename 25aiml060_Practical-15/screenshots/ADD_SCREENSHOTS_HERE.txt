@@ -1,0 +1,1 @@
+Add your own screenshots after running the application: home, registration, student dashboard, admin dashboard, events, API response, XAMPP and GitHub repository.

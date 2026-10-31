@@ -1,0 +1,10 @@
+<?php
+require_once __DIR__.'/includes/bootstrap.php'; require_login(); $uid=current_user()['id']; $errors=[];
+$q=db()->prepare('SELECT name,email,mobile,course FROM users WHERE id=?'); $q->execute([$uid]); $profile=$q->fetch();
+if($_SERVER['REQUEST_METHOD']==='POST'){verify_csrf();$name=trim($_POST['name']??'');$mobile=trim($_POST['mobile']??'');$course=trim($_POST['course']??'');
+if(mb_strlen($name)<2)$errors[]='Enter a valid name.'; if($mobile!==''&&!preg_match('/^[0-9]{10}$/',$mobile))$errors[]='Mobile must contain 10 digits.';
+if(!$errors){$u=db()->prepare('UPDATE users SET name=?,mobile=?,course=? WHERE id=?');$u->execute([$name,$mobile,$course,$uid]);$_SESSION['user']['name']=$name;audit('profile_update','Profile updated');flash('success','Profile updated successfully.');redirect('profile.php');}}
+$pageTitle='My profile';require __DIR__.'/includes/header.php';?>
+<div class="auth-wrap"><div class="auth-card"><span class="eyebrow">ACCOUNT SETTINGS</span><h1 class="mt-2">My profile</h1><?php foreach($errors as $er):?><div class="alert alert-danger"><?=e($er)?></div><?php endforeach;?>
+<form method="post"><input type="hidden" name="csrf_token" value="<?=e(csrf_token())?>"><div class="mb-3"><label class="form-label" for="name">Full name</label><input class="form-control" id="name" name="name" value="<?=e($_POST['name']??$profile['name'])?>" required></div><div class="mb-3"><label class="form-label" for="email">Email (cannot be changed here)</label><input class="form-control" id="email" value="<?=e($profile['email'])?>" disabled></div><div class="mb-3"><label class="form-label" for="mobile">Mobile</label><input class="form-control" id="mobile" name="mobile" maxlength="10" value="<?=e($_POST['mobile']??$profile['mobile'])?>"></div><div class="mb-4"><label class="form-label" for="course">Course</label><input class="form-control" id="course" name="course" value="<?=e($_POST['course']??$profile['course'])?>"></div><button class="btn btn-primary w-100">Save changes</button></form></div></div>
+<?php require __DIR__.'/includes/footer.php';?>
